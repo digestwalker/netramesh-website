@@ -1,0 +1,8 @@
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Local build artifacts (the generated PNGs ARE committed — they are the deployed site)
+*.zip

@@ -1,0 +1,23 @@
+---
+# cPanel Git Version Control deployment.
+# Runs when you click "Deploy HEAD Commit" in cPanel (Git Version Control).
+# Copies ONLY the production files into the document root — dev files
+# (tools/, master logo, README/DEPLOY docs, _headers) stay in the repo, not on the live site.
+#
+# IMPORTANT: replace CPANEL_USERNAME below with your cPanel account username.
+# For an ADDON/SUBDOMAIN, change public_html to that domain's document root
+# (e.g. /home/CPANEL_USERNAME/netramesh.com).
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/CPANEL_USERNAME/public_html
+    - /bin/mkdir -p $DEPLOYPATH/assets/css $DEPLOYPATH/assets/js $DEPLOYPATH/assets/img
+    - /bin/cp -f index.html $DEPLOYPATH/
+    - /bin/cp -f .htaccess $DEPLOYPATH/
+    - /bin/cp -f robots.txt $DEPLOYPATH/
+    - /bin/cp -f sitemap.xml $DEPLOYPATH/
+    - /bin/cp -f assets/css/styles.css $DEPLOYPATH/assets/css/
+    - /bin/cp -f assets/js/main.js $DEPLOYPATH/assets/js/
+    - /bin/cp -f assets/img/logo-icon.png $DEPLOYPATH/assets/img/
+    - /bin/cp -f assets/img/favicon.png $DEPLOYPATH/assets/img/
+    - /bin/cp -f assets/img/apple-touch-icon.png $DEPLOYPATH/assets/img/
+    - /bin/cp -f assets/img/og-image.png $DEPLOYPATH/assets/img/

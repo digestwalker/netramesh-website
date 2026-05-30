@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====== SECURITY HEADERS (meta-level; also enforced server-side via _headers) ====== -->
+  <meta http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+  <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
+  <!-- ====== SEO / SOCIAL ====== -->
+  <title>NetraMesh Labs — Cyber Defense, Reimagined</title>
+  <meta name="description" content="NetraMesh Labs builds an integrated cyber defense platform: SOC Dashboard, SIEM, SOAR, UEBA, CMDB, Case Management, Incident Response, Sandboxing & Vulnerability Management." />
+  <meta name="theme-color" content="#0F172A" />
+  <link rel="canonical" href="https://netramesh.com/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="NetraMesh Labs — Cyber Defense, Reimagined" />
+  <meta property="og:description" content="An integrated security operations platform — detect, investigate, and respond from a single mesh." />
+  <meta property="og:url" content="https://netramesh.com/" />
+  <meta property="og:site_name" content="NetraMesh Labs" />
+  <meta property="og:image" content="https://netramesh.com/assets/img/og-image.png" />
+  <meta property="og:image:secure_url" content="https://netramesh.com/assets/img/og-image.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="NetraMesh Labs — integrated security operations platform (SIEM, SOAR, UEBA, CMDB, SOC, Sandbox)." />
+
+  <!-- Twitter / X card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="NetraMesh Labs — Cyber Defense, Reimagined" />
+  <meta name="twitter:description" content="An integrated security operations platform — detect, investigate, and respond from a single mesh." />
+  <meta name="twitter:image" content="https://netramesh.com/assets/img/og-image.png" />
+  <meta name="twitter:image:alt" content="NetraMesh Labs cyber defense platform." />
+
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="preload" href="assets/css/styles.css" as="style" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <!-- Skip link for accessibility -->
+  <a class="skip-link" href="#home" data-en="Skip to content" data-id="Lewati ke konten">Skip to content</a>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- ============================== NAVBAR ============================== -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="#home" aria-label="NetraMesh Labs home">
+        <img class="brand__logo" src="assets/img/logo-icon.png" width="63" height="32" alt="" aria-hidden="true" />
+        <span class="brand__text">Netra<span class="brand__accent">Mesh</span><span class="brand__labs">Labs</span></span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="#products" data-en="Products" data-id="Produk">Products</a>
+        <a href="#preview" data-en="Preview" data-id="Pratinjau">Preview</a>
+        <a href="#solutions" data-en="Solutions" data-id="Solusi">Solutions</a>
+        <a href="#platform" data-en="Platform" data-id="Platform">Platform</a>
+        <a href="#about" data-en="About" data-id="Tentang">About</a>
+        <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
+        <div class="nav__cta-group">
+          <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">
+            <span class="lang-toggle__opt is-active" data-lang="en">EN</span>
+            <span class="lang-toggle__sep">/</span>
+            <span class="lang-toggle__opt" data-lang="id">ID</span>
+          </button>
+          <a class="btn btn--primary btn--sm" href="#contact" data-en="Get a Demo" data-id="Minta Demo">Get a Demo</a>
+        </div>
+      </nav>
+
+      <button class="nav__burger" id="navBurger" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================== HERO ============================== -->
+    <section class="hero" id="home">
+      <canvas class="hero__mesh" id="meshCanvas" aria-hidden="true"></canvas>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__spotlight" id="spotlight" aria-hidden="true"></div>
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow reveal" data-en="// Integrated Security Operations Platform" data-id="// Platform Operasi Keamanan Terintegrasi">// Integrated Security Operations Platform</p>
+          <h1 class="hero__title reveal">
+            <span data-en="Cyber defense," data-id="Pertahanan siber,">Cyber defense,</span>
+            <span class="hero__title-accent" data-scramble data-en="woven into one mesh." data-id="terjalin dalam satu mesh.">woven into one mesh.</span>
+          </h1>
+          <p class="hero__lead reveal" data-en="NetraMesh Labs connects detection, investigation, and response into a single intelligent fabric — so your SOC sees everything, correlates faster, and acts in seconds." data-id="NetraMesh Labs menyatukan deteksi, investigasi, dan respons dalam satu jalinan cerdas — agar SOC Anda melihat segalanya, berkorelasi lebih cepat, dan bertindak dalam hitungan detik.">NetraMesh Labs connects detection, investigation, and response into a single intelligent fabric — so your SOC sees everything, correlates faster, and acts in seconds.</p>
+          <div class="hero__actions reveal">
+            <a class="btn btn--primary" data-magnetic href="#products" data-en="Explore the Platform" data-id="Jelajahi Platform">Explore the Platform</a>
+            <a class="btn btn--ghost" href="#contact" data-en="Talk to an Expert" data-id="Hubungi Pakar">Talk to an Expert</a>
+          </div>
+          <ul class="hero__trust reveal" aria-label="Capabilities">
+            <li><span class="dot"></span><span data-en="24/7 Threat Monitoring" data-id="Pemantauan Ancaman 24/7">24/7 Threat Monitoring</span></li>
+            <li><span class="dot"></span><span data-en="Automated Response" data-id="Respons Otomatis">Automated Response</span></li>
+            <li><span class="dot"></span><span data-en="Full Asset Visibility" data-id="Visibilitas Aset Penuh">Full Asset Visibility</span></li>
+          </ul>
+        </div>
+
+        <!-- Live SOC console (simulated, client-side only — no real data) -->
+        <div class="console reveal" aria-hidden="true">
+          <div class="console__bar">
+            <span class="console__dots"><i></i><i></i><i></i></span>
+            <span class="console__title">netramesh@soc — live-stream</span>
+            <span class="console__badge"><span class="console__pulse"></span>LIVE</span>
+          </div>
+          <div class="console__body" id="consoleBody"></div>
+          <div class="console__foot">
+            <span class="console__foot-ico" aria-hidden="true">▣</span>
+            <span class="console__foot-label" data-en="Threats blocked today" data-id="Ancaman diblokir hari ini">Threats blocked today</span>
+            <span class="console__foot-num" id="threatCount" role="status" aria-live="off">0</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero__scroll" aria-hidden="true"><span></span></div>
+    </section>
+
+    <!-- ============================== THREAT INTEL MARQUEE ============================== -->
+    <section class="ticker" aria-hidden="true">
+      <div class="ticker__label"><span class="console__pulse"></span><span data-en="THREAT INTEL" data-id="INTEL ANCAMAN">THREAT INTEL</span></div>
+      <div class="ticker__track">
+        <div class="ticker__set">
+          <span>MITRE ATT&amp;CK&reg; mapped</span><span class="ticker__sep">/</span>
+          <span>Real-time IOC enrichment</span><span class="ticker__sep">/</span>
+          <span>CVE &amp; exploit feeds</span><span class="ticker__sep">/</span>
+          <span>Behavioral baselining</span><span class="ticker__sep">/</span>
+          <span>Automated containment</span><span class="ticker__sep">/</span>
+          <span>Zero-trust telemetry</span><span class="ticker__sep">/</span>
+          <span>Threat hunting</span><span class="ticker__sep">/</span>
+        </div>
+        <div class="ticker__set" aria-hidden="true">
+          <span>MITRE ATT&amp;CK&reg; mapped</span><span class="ticker__sep">/</span>
+          <span>Real-time IOC enrichment</span><span class="ticker__sep">/</span>
+          <span>CVE &amp; exploit feeds</span><span class="ticker__sep">/</span>
+          <span>Behavioral baselining</span><span class="ticker__sep">/</span>
+          <span>Automated containment</span><span class="ticker__sep">/</span>
+          <span>Zero-trust telemetry</span><span class="ticker__sep">/</span>
+          <span>Threat hunting</span><span class="ticker__sep">/</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== STATS STRIP ============================== -->
+    <section class="stats" aria-label="Key metrics">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num" data-count="9">0</span><span class="stat__plus">+</span>
+          <p class="stat__label" data-en="Integrated Modules" data-id="Modul Terintegrasi">Integrated Modules</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="200">0</span><span class="stat__plus">+</span>
+          <p class="stat__label" data-en="Data Source Connectors" data-id="Konektor Sumber Data">Data Source Connectors</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="90">0</span><span class="stat__plus">%</span>
+          <p class="stat__label" data-en="Faster Triage" data-id="Triase Lebih Cepat">Faster Triage</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="24">0</span><span class="stat__plus">/7</span>
+          <p class="stat__label" data-en="Continuous Defense" data-id="Pertahanan Berkelanjutan">Continuous Defense</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PRODUCTS ============================== -->
+    <section class="section" id="products">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="Products" data-id="Produk">Products</p>
+          <h2 class="section__title" data-en="One platform. Every layer of defense." data-id="Satu platform. Setiap lapis pertahanan.">One platform. Every layer of defense.</h2>
+          <p class="section__sub" data-en="Modular by design, unified by data. Deploy what you need today and grow into the full mesh." data-id="Modular dalam desain, menyatu dalam data. Terapkan yang Anda butuhkan hari ini dan kembangkan ke seluruh mesh.">Modular by design, unified by data. Deploy what you need today and grow into the full mesh.</p>
+        </div>
+
+        <div class="grid grid--products">
+          <!-- SOC Dashboard -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="soc">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="5" rx="1"/><rect x="13" y="10" width="8" height="11" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/></svg>
+            </span>
+            <h3 class="card__title">SOC Dashboard</h3>
+            <p class="card__text" data-en="A single pane of glass for your security operations — live alerts, KPIs, and analyst workflows in real time." data-id="Satu layar terpadu untuk operasi keamanan Anda — alert langsung, KPI, dan alur kerja analis secara real-time.">A single pane of glass for your security operations — live alerts, KPIs, and analyst workflows in real time.</p>
+          </article>
+          <!-- SIEM -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="siem">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/><circle cx="8" cy="5" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="10" cy="19" r="2"/></svg>
+            </span>
+            <h3 class="card__title">SIEM</h3>
+            <p class="card__text" data-en="Centralized log collection, normalization, and correlation at scale — turning raw events into actionable detections." data-id="Pengumpulan, normalisasi, dan korelasi log terpusat dalam skala besar — mengubah event mentah menjadi deteksi yang dapat ditindaklanjuti.">Centralized log collection, normalization, and correlation at scale — turning raw events into actionable detections.</p>
+          </article>
+          <!-- SOAR -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="soar">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4"/><path d="M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3"/></svg>
+            </span>
+            <h3 class="card__title">SOAR</h3>
+            <p class="card__text" data-en="Orchestrate and automate response playbooks across your stack — cut mean-time-to-respond from hours to seconds." data-id="Orkestrasi dan otomasi playbook respons di seluruh stack Anda — pangkas waktu respons dari jam menjadi detik.">Orchestrate and automate response playbooks across your stack — cut mean-time-to-respond from hours to seconds.</p>
+          </article>
+          <!-- UEBA -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="ueba">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c0-3.5 3-6 7-6s7 2.5 7 6"/><path d="M18 4l1.5 1.5M18 4l-1.5 1.5"/></svg>
+            </span>
+            <h3 class="card__title">UEBA</h3>
+            <p class="card__text" data-en="User & entity behavior analytics that baselines normal activity and flags the anomalies that signal insider and account threats." data-id="Analitik perilaku pengguna & entitas yang membentuk baseline aktivitas normal dan menandai anomali penanda ancaman internal dan akun.">User & entity behavior analytics that baselines normal activity and flags the anomalies that signal insider and account threats.</p>
+          </article>
+          <!-- CMDB -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="cmdb">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="3"/><path d="M5 6v6c0 1.7 3 3 7 3s7-1.3 7-3V6"/><path d="M5 12v6c0 1.7 3 3 7 3s7-1.3 7-3v-6"/></svg>
+            </span>
+            <h3 class="card__title">CMDB</h3>
+            <p class="card__text" data-en="A living configuration management database that maps every asset, dependency, and relationship across your environment." data-id="Configuration management database hidup yang memetakan setiap aset, dependensi, dan relasi di seluruh lingkungan Anda.">A living configuration management database that maps every asset, dependency, and relationship across your environment.</p>
+          </article>
+          <!-- Case Management -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="cases">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2"/><path d="M9 6V4h6v2"/><path d="M8 11h8M8 15h5"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Case Management" data-id="Manajemen Kasus">Case Management</h3>
+            <p class="card__text" data-en="Track every investigation end to end — evidence, timelines, collaboration, and audit trails in one workspace." data-id="Lacak setiap investigasi dari awal hingga akhir — bukti, lini masa, kolaborasi, dan jejak audit dalam satu ruang kerja.">Track every investigation end to end — evidence, timelines, collaboration, and audit trails in one workspace.</p>
+          </article>
+          <!-- Incident Response -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="ir">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2l9 4v6c0 5-3.8 8.5-9 10-5.2-1.5-9-5-9-10V6z"/><path d="M9 12l2 2 4-4"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Incident Response" data-id="Incident Response">Incident Response</h3>
+            <p class="card__text" data-en="Guided IR workflows that move teams from alert to containment to recovery — with built-in playbooks and forensics." data-id="Alur kerja IR terpandu yang membawa tim dari alert ke kontainmen hingga pemulihan — dengan playbook dan forensik bawaan.">Guided IR workflows that move teams from alert to containment to recovery — with built-in playbooks and forensics.</p>
+          </article>
+          <!-- Sandboxing -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="sandbox">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18"/><circle cx="7" cy="6.5" r=".8"/><path d="M8 14l2.5 2.5L16 11"/></svg>
+            </span>
+            <h3 class="card__title">Sandboxing</h3>
+            <p class="card__text" data-en="Detonate suspicious files and URLs in isolated environments to expose malware behavior before it reaches production." data-id="Detonasi file dan URL mencurigakan di lingkungan terisolasi untuk mengungkap perilaku malware sebelum mencapai produksi.">Detonate suspicious files and URLs in isolated environments to expose malware behavior before it reaches production.</p>
+          </article>
+          <!-- Vulnerability Management -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="vuln">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.5 7.5-8 9-4.5-1.5-8-4.5-8-9V7z"/><path d="M12 8v4"/><circle cx="12" cy="15.5" r=".9" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Vulnerability Management" data-id="Vulnerability Management">Vulnerability Management</h3>
+            <p class="card__text" data-en="Continuously discover, prioritize, and remediate vulnerabilities by real-world risk — not just CVSS noise." data-id="Temukan, prioritaskan, dan remediasi kerentanan secara berkelanjutan berdasarkan risiko nyata — bukan sekadar noise CVSS.">Continuously discover, prioritize, and remediate vulnerabilities by real-world risk — not just CVSS noise.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PRODUCT PREVIEW / MOCKUP ============================== -->
+    <section class="section" id="preview">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="Product Preview" data-id="Pratinjau Produk">Product Preview</p>
+          <h2 class="section__title" data-en="A look inside the mesh" data-id="Lihat langsung ke dalam mesh">A look inside the mesh</h2>
+          <p class="section__sub" data-en="Every signal, asset, and response in one workspace. Switch views to explore the platform." data-id="Setiap sinyal, aset, dan respons dalam satu ruang kerja. Ganti tampilan untuk menjelajahi platform.">Every signal, asset, and response in one workspace. Switch views to explore the platform.</p>
+        </div>
+
+        <div class="appwin reveal" role="img" aria-label="NetraMesh platform dashboard preview (illustrative mockup)">
+          <div class="appwin__bar">
+            <span class="console__dots"><i></i><i></i><i></i></span>
+            <span class="appwin__url"><span class="appwin__lock" aria-hidden="true">🔒</span> app.netramesh.com/console</span>
+            <span class="appwin__live"><span class="console__pulse"></span>SYNCED</span>
+          </div>
+          <div class="appwin__body">
+            <aside class="appwin__side" aria-hidden="true">
+              <span class="appwin__logo">
+                <svg viewBox="0 0 40 40" width="22" height="22"><g fill="none" stroke="#1E88E5" stroke-width="2"><line x1="20" y1="6" x2="32" y2="14"/><line x1="32" y1="14" x2="20" y2="34"/><line x1="20" y1="34" x2="8" y2="14"/><line x1="8" y1="14" x2="20" y2="6"/></g><circle cx="20" cy="20" r="3" fill="#fff"/></svg>
+              </span>
+              <span class="appwin__navico is-active">▦</span>
+              <span class="appwin__navico">▤</span>
+              <span class="appwin__navico">◈</span>
+              <span class="appwin__navico">◇</span>
+              <span class="appwin__navico">⚑</span>
+              <span class="appwin__navico">⚙</span>
+            </aside>
+
+            <div class="appwin__main">
+              <div class="appwin__tabs" role="tablist" aria-label="Dashboard views">
+                <button class="appwin__tab is-active" data-view="soc" role="tab" aria-selected="true" type="button">SOC Overview</button>
+                <button class="appwin__tab" data-view="siem" role="tab" aria-selected="false" type="button">SIEM Events</button>
+                <button class="appwin__tab" data-view="vuln" role="tab" aria-selected="false" type="button">Vulnerability Posture</button>
+                <button class="appwin__tab" data-view="cases" role="tab" aria-selected="false" type="button">Case Management</button>
+                <button class="appwin__tab" data-view="ir" role="tab" aria-selected="false" type="button">Incident Response</button>
+                <button class="appwin__tab" data-view="cmdb" role="tab" aria-selected="false" type="button">CMDB Graph</button>
+                <button class="appwin__tab" data-view="soar" role="tab" aria-selected="false" type="button">SOAR Playbook</button>
+                <button class="appwin__tab" data-view="ueba" role="tab" aria-selected="false" type="button">UEBA</button>
+                <button class="appwin__tab" data-view="sandbox" role="tab" aria-selected="false" type="button">Sandboxing</button>
+              </div>
+
+              <!-- VIEW: SOC OVERVIEW -->
+              <div class="dashview is-active" data-view="soc" role="tabpanel">
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Active Alerts</span><span class="kpi__val">37</span><span class="kpi__delta kpi__delta--up">▲ 12%</span></div>
+                  <div class="kpi"><span class="kpi__label">Mean Time to Respond</span><span class="kpi__val">2.1<small>s</small></span><span class="kpi__delta kpi__delta--down">▼ 38%</span></div>
+                  <div class="kpi"><span class="kpi__label">Assets Monitored</span><span class="kpi__val">12,640</span><span class="kpi__delta kpi__delta--ok">● live</span></div>
+                  <div class="kpi"><span class="kpi__label">Risk Score</span><span class="kpi__val">86<small>/100</small></span><span class="kpi__delta kpi__delta--up">▲ 4</span></div>
+                </div>
+                <div class="dashgrid">
+                  <div class="panel panel--chart">
+                    <div class="panel__head"><h4>Alert Volume — 24h</h4><span class="panel__tag">realtime</span></div>
+                    <svg class="area" viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                      <defs><linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1E88E5" stop-opacity=".45"/><stop offset="100%" stop-color="#1E88E5" stop-opacity="0"/></linearGradient></defs>
+                      <path class="area__fill" d="M0,95 L0,80 C20,70 40,88 60,72 C80,56 100,60 120,48 C140,36 160,52 180,40 C200,28 220,44 240,30 C260,18 280,34 300,22 L320,18 L320,120 L0,120 Z" fill="url(#areaFill)"/>
+                      <path class="area__line" d="M0,80 C20,70 40,88 60,72 C80,56 100,60 120,48 C140,36 160,52 180,40 C200,28 220,44 240,30 C260,18 280,34 300,22 L320,18" fill="none" stroke="#1E88E5" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div class="panel panel--donut">
+                    <div class="panel__head"><h4>By Severity</h4></div>
+                    <div class="donutwrap">
+                      <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
+                        <circle class="donut__bg" cx="21" cy="21" r="15.9"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#ff6b6b" stroke-dasharray="22 78" stroke-dashoffset="0"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#f5b041" stroke-dasharray="30 70" stroke-dashoffset="-22"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#1E88E5" stroke-dasharray="28 72" stroke-dashoffset="-52"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#4ade80" stroke-dasharray="20 80" stroke-dashoffset="-80"/>
+                      </svg>
+                      <div class="donut__center"><strong>37</strong><span>open</span></div>
+                    </div>
+                    <ul class="legend">
+                      <li><i data-bg="#ff6b6b"></i>Critical <b>8</b></li>
+                      <li><i data-bg="#f5b041"></i>High <b>11</b></li>
+                      <li><i data-bg="#1E88E5"></i>Medium <b>10</b></li>
+                      <li><i data-bg="#4ade80"></i>Low <b>8</b></li>
+                    </ul>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Live Alert Feed</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>live</span></div>
+                    <ul class="feed">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">T1021 · Lateral movement — WIN-DC-02</span><span class="feed__time">12:04</span><span class="badge badge--crit">critical</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">Impossible travel — j.doe@corp</span><span class="feed__time">12:01</span><span class="badge badge--high">high</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">Malware detonated in sandbox — a1f9</span><span class="feed__time">11:58</span><span class="badge badge--ok">contained</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">Brute-force attempt — vpn-gw-01</span><span class="feed__time">11:52</span><span class="badge badge--high">high</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">New asset discovered — 10.4.12.88</span><span class="feed__time">11:47</span><span class="badge">info</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: SIEM EVENTS -->
+              <div class="dashview" data-view="siem" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Events / sec</span><span class="kpi__val">4,128</span><span class="kpi__delta kpi__delta--up">▲ peak</span></div>
+                  <div class="kpi"><span class="kpi__label">Log Sources</span><span class="kpi__val">214</span><span class="kpi__delta kpi__delta--ok">● healthy</span></div>
+                  <div class="kpi"><span class="kpi__label">Correlation Rules</span><span class="kpi__val">96</span><span class="kpi__delta kpi__delta--ok">active</span></div>
+                  <div class="kpi"><span class="kpi__label">Dropped</span><span class="kpi__val">0</span><span class="kpi__delta kpi__delta--ok">0%</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--chart">
+                    <div class="panel__head"><h4>Ingest Throughput by Source</h4><span class="panel__tag">events/s</span></div>
+                    <div class="bars">
+                      <div class="bar" data-h="88%"><span>EDR</span></div>
+                      <div class="bar" data-h="64%"><span>Firewall</span></div>
+                      <div class="bar" data-h="72%"><span>Cloud</span></div>
+                      <div class="bar" data-h="46%"><span>Identity</span></div>
+                      <div class="bar" data-h="58%"><span>DNS</span></div>
+                      <div class="bar" data-h="34%"><span>Proxy</span></div>
+                      <div class="bar" data-h="80%"><span>Endpoint</span></div>
+                    </div>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Normalized Events</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>stream</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="feed__time">12:04:01</span><span class="feed__name">auth.failed · 10.2.4.7 → dc01</span><span class="badge badge--high">corr</span></li>
+                      <li><span class="feed__time">12:04:01</span><span class="feed__name">proc.exec · powershell -enc …</span><span class="badge badge--crit">T1059</span></li>
+                      <li><span class="feed__time">12:04:00</span><span class="feed__name">net.conn · 443 → 185.x.x.x (rare)</span><span class="badge badge--high">rare</span></li>
+                      <li><span class="feed__time">12:03:59</span><span class="feed__name">dns.query · c2-beacon.example</span><span class="badge badge--crit">IOC</span></li>
+                      <li><span class="feed__time">12:03:58</span><span class="feed__name">file.write · %TEMP%\svc.exe</span><span class="badge badge--high">susp</span></li>
+                      <li><span class="feed__time">12:03:57</span><span class="feed__name">cloud.iam · role escalation</span><span class="badge badge--high">priv</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: VULNERABILITY POSTURE -->
+              <div class="dashview" data-view="vuln" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Open Findings</span><span class="kpi__val">1,284</span><span class="kpi__delta kpi__delta--down">▼ 9%</span></div>
+                  <div class="kpi"><span class="kpi__label">Critical / KEV</span><span class="kpi__val">18</span><span class="kpi__delta kpi__delta--up">▲ 3</span></div>
+                  <div class="kpi"><span class="kpi__label">Remediated (30d)</span><span class="kpi__val">92<small>%</small></span><span class="kpi__delta kpi__delta--ok">on track</span></div>
+                  <div class="kpi"><span class="kpi__label">Mean SLA</span><span class="kpi__val">6.4<small>d</small></span><span class="kpi__delta kpi__delta--down">▼ 1.2d</span></div>
+                </div>
+                <div class="dashgrid dashgrid--vuln">
+                  <div class="panel">
+                    <div class="panel__head"><h4>Findings by Severity</h4></div>
+                    <ul class="sevbars">
+                      <li><span>Critical</span><span class="track"><b data-w="14%" data-bg="#ff6b6b"></b></span><em>18</em></li>
+                      <li><span>High</span><span class="track"><b data-w="34%" data-bg="#f5b041"></b></span><em>146</em></li>
+                      <li><span>Medium</span><span class="track"><b data-w="62%" data-bg="#1E88E5"></b></span><em>520</em></li>
+                      <li><span>Low</span><span class="track"><b data-w="78%" data-bg="#4ade80"></b></span><em>600</em></li>
+                    </ul>
+                  </div>
+                  <div class="panel panel--donut">
+                    <div class="panel__head"><h4>Remediation</h4></div>
+                    <div class="donutwrap">
+                      <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
+                        <circle class="donut__bg" cx="21" cy="21" r="15.9"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#4ade80" stroke-dasharray="92 8" stroke-dashoffset="25"/>
+                      </svg>
+                      <div class="donut__center"><strong>92<small>%</small></strong><span>patched</span></div>
+                    </div>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Top Exploitable CVEs</h4><span class="panel__tag">risk-ranked</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="feed__name">CVE-2026-3148 · RCE in edge-gw</span><span class="badge badge--crit">9.8</span></li>
+                      <li><span class="feed__name">CVE-2026-2270 · auth bypass</span><span class="badge badge--crit">9.1</span></li>
+                      <li><span class="feed__name">CVE-2025-9912 · priv-esc kernel</span><span class="badge badge--high">8.4</span></li>
+                      <li><span class="feed__name">CVE-2025-7741 · SSRF in api-svc</span><span class="badge badge--high">7.9</span></li>
+                      <li><span class="feed__name">CVE-2025-6033 · deserialization</span><span class="badge badge--high">7.5</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: CASE MANAGEMENT (kanban) -->
+              <div class="dashview" data-view="cases" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Open Cases</span><span class="kpi__val">24</span><span class="kpi__delta kpi__delta--up">▲ 5</span></div>
+                  <div class="kpi"><span class="kpi__label">In Progress</span><span class="kpi__val">9</span><span class="kpi__delta kpi__delta--ok">active</span></div>
+                  <div class="kpi"><span class="kpi__label">Avg Resolution</span><span class="kpi__val">4.2<small>h</small></span><span class="kpi__delta kpi__delta--down">▼ 0.8h</span></div>
+                  <div class="kpi"><span class="kpi__label">Closed (7d)</span><span class="kpi__val">63</span><span class="kpi__delta kpi__delta--ok">● SLA 98%</span></div>
+                </div>
+                <div class="board">
+                  <div class="board__col">
+                    <div class="board__head"><span class="sev sev--crit"></span>Triage <b>3</b></div>
+                    <div class="kase"><span class="kase__id">CASE-4821</span><p>Lateral movement — WIN-DC-02</p><div class="kase__meta"><span class="badge badge--crit">critical</span><span class="ava ava--a">AR</span></div></div>
+                    <div class="kase"><span class="kase__id">CASE-4820</span><p>Phishing payload detonated</p><div class="kase__meta"><span class="badge badge--high">high</span><span class="ava ava--b">SD</span></div></div>
+                    <div class="kase"><span class="kase__id">CASE-4818</span><p>Suspicious OAuth grant</p><div class="kase__meta"><span class="badge badge--high">high</span><span class="ava ava--c">MN</span></div></div>
+                  </div>
+                  <div class="board__col">
+                    <div class="board__head"><span class="sev sev--high"></span>Investigating <b>2</b></div>
+                    <div class="kase"><span class="kase__id">CASE-4815</span><p>Impossible travel — j.doe</p><div class="kase__meta"><span class="badge badge--high">high</span><span class="ava ava--a">AR</span></div></div>
+                    <div class="kase"><span class="kase__id">CASE-4811</span><p>Beaconing to rare ASN</p><div class="kase__meta"><span class="badge badge--med">medium</span><span class="ava ava--c">MN</span></div></div>
+                  </div>
+                  <div class="board__col">
+                    <div class="board__head"><span class="sev sev--med"></span>Containment <b>2</b></div>
+                    <div class="kase"><span class="kase__id">CASE-4808</span><p>Host isolated via SOAR</p><div class="kase__meta"><span class="badge badge--ok">running</span><span class="ava ava--b">SD</span></div></div>
+                    <div class="kase"><span class="kase__id">CASE-4805</span><p>Credential reset enforced</p><div class="kase__meta"><span class="badge badge--ok">running</span><span class="ava ava--a">AR</span></div></div>
+                  </div>
+                  <div class="board__col">
+                    <div class="board__head"><span class="sev sev--low"></span>Resolved <b>2</b></div>
+                    <div class="kase kase--done"><span class="kase__id">CASE-4799</span><p>Malware quarantined</p><div class="kase__meta"><span class="badge badge--ok">closed</span><span class="ava ava--c">MN</span></div></div>
+                    <div class="kase kase--done"><span class="kase__id">CASE-4796</span><p>False positive — tuned rule</p><div class="kase__meta"><span class="badge">closed</span><span class="ava ava--b">SD</span></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: CMDB GRAPH -->
+              <div class="dashview" data-view="cmdb" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Total Assets</span><span class="kpi__val">12,640</span><span class="kpi__delta kpi__delta--ok">● synced</span></div>
+                  <div class="kpi"><span class="kpi__label">Critical Assets</span><span class="kpi__val">218</span><span class="kpi__delta kpi__delta--up">▲ 6</span></div>
+                  <div class="kpi"><span class="kpi__label">Unmanaged</span><span class="kpi__val">12</span><span class="kpi__delta kpi__delta--up">▲ 12</span></div>
+                  <div class="kpi"><span class="kpi__label">Relationships</span><span class="kpi__val">48<small>k</small></span><span class="kpi__delta kpi__delta--ok">mapped</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel">
+                    <div class="panel__head"><h4>Asset Relationship Map</h4><span class="panel__tag">topology</span></div>
+                    <svg class="graph" viewBox="0 0 360 220" aria-hidden="true">
+                      <g class="graph__edges" stroke="#1E88E5" stroke-opacity=".4" stroke-width="1.5">
+                        <line x1="180" y1="110" x2="80" y2="50"/><line x1="180" y1="110" x2="300" y2="55"/>
+                        <line x1="180" y1="110" x2="70" y2="170"/><line x1="180" y1="110" x2="300" y2="165"/>
+                        <line x1="180" y1="110" x2="180" y2="30"/><line x1="180" y1="110" x2="180" y2="195"/>
+                        <line x1="80" y1="50" x2="180" y2="30"/><line x1="300" y1="55" x2="180" y2="30"/>
+                      </g>
+                      <g class="graph__nodes">
+                        <g class="gnode gnode--core"><circle cx="180" cy="110" r="22"/><text x="180" y="113">CORE</text></g>
+                        <g class="gnode"><circle cx="80" cy="50" r="15"/><text x="80" y="53">DB</text></g>
+                        <g class="gnode"><circle cx="300" cy="55" r="15"/><text x="300" y="58">API</text></g>
+                        <g class="gnode gnode--warn"><circle cx="70" cy="170" r="15"/><text x="70" y="173">WEB</text></g>
+                        <g class="gnode"><circle cx="300" cy="165" r="15"/><text x="300" y="168">AUTH</text></g>
+                        <g class="gnode"><circle cx="180" cy="30" r="14"/><text x="180" y="33">FW</text></g>
+                        <g class="gnode"><circle cx="180" cy="195" r="14"/><text x="180" y="198">EDR</text></g>
+                      </g>
+                    </svg>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Asset Inventory</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>live</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--low"></span><span class="feed__name">srv-core-01 · hypervisor</span><span class="badge badge--ok">healthy</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">db-prod-02 · postgres 16</span><span class="badge badge--ok">healthy</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">web-dmz-07 · nginx</span><span class="badge badge--high">drift</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">auth-idp-01 · keycloak</span><span class="badge">patch due</span></li>
+                      <li><span class="sev sev--crit"></span><span class="feed__name">10.4.12.88 · unmanaged</span><span class="badge badge--crit">unknown</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: SOAR PLAYBOOK -->
+              <div class="dashview" data-view="soar" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Active Playbooks</span><span class="kpi__val">42</span><span class="kpi__delta kpi__delta--ok">running</span></div>
+                  <div class="kpi"><span class="kpi__label">Auto-Resolved</span><span class="kpi__val">78<small>%</small></span><span class="kpi__delta kpi__delta--down">▲ 11%</span></div>
+                  <div class="kpi"><span class="kpi__label">Actions Today</span><span class="kpi__val">1,204</span><span class="kpi__delta kpi__delta--ok">● live</span></div>
+                  <div class="kpi"><span class="kpi__label">Avg Run Time</span><span class="kpi__val">2.1<small>s</small></span><span class="kpi__delta kpi__delta--down">▼ 38%</span></div>
+                </div>
+                <div class="panel">
+                  <div class="panel__head"><h4>Playbook · "Contain Compromised Host"</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>executing</span></div>
+                  <div class="flow">
+                    <div class="flow__step is-done"><span class="flow__ico">⚑</span><span class="flow__name">Trigger</span><span class="flow__sub">SIEM alert</span></div>
+                    <div class="flow__step is-done"><span class="flow__ico">⊕</span><span class="flow__name">Enrich IOC</span><span class="flow__sub">threat intel</span></div>
+                    <div class="flow__step is-done"><span class="flow__ico">◈</span><span class="flow__name">Risk Decision</span><span class="flow__sub">score 0.94</span></div>
+                    <div class="flow__step is-run"><span class="flow__ico">▣</span><span class="flow__name">Isolate Host</span><span class="flow__sub">EDR action</span></div>
+                    <div class="flow__step"><span class="flow__ico">✉</span><span class="flow__name">Notify</span><span class="flow__sub">analyst + Slack</span></div>
+                    <div class="flow__step"><span class="flow__ico">✓</span><span class="flow__name">Close Case</span><span class="flow__sub">auto-document</span></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: UEBA -->
+              <div class="dashview" data-view="ueba" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Top Anomaly Score</span><span class="kpi__val">0.94</span><span class="kpi__delta kpi__delta--up">▲ critical</span></div>
+                  <div class="kpi"><span class="kpi__label">Monitored Entities</span><span class="kpi__val">8,420</span><span class="kpi__delta kpi__delta--ok">● baselined</span></div>
+                  <div class="kpi"><span class="kpi__label">Risky Users</span><span class="kpi__val">14</span><span class="kpi__delta kpi__delta--up">▲ 3</span></div>
+                  <div class="kpi"><span class="kpi__label">Active Sessions</span><span class="kpi__val">2,310</span><span class="kpi__delta kpi__delta--ok">live</span></div>
+                </div>
+                <div class="dashgrid">
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Behavior Timeline — svc-bot@corp</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>scoring</span></div>
+                    <ul class="timeline">
+                      <li><span class="timeline__time">12:04</span><span class="timeline__dot timeline__dot--crit"></span><div class="timeline__body"><b>Off-hours privileged login</b><span>03:11 local · never seen for this account</span></div><em class="risk risk--up">+0.34</em></li>
+                      <li><span class="timeline__time">12:01</span><span class="timeline__dot timeline__dot--high"></span><div class="timeline__body"><b>Access to 142 file shares</b><span>baseline ≈ 6 / day</span></div><em class="risk risk--up">+0.28</em></li>
+                      <li><span class="timeline__time">11:57</span><span class="timeline__dot timeline__dot--high"></span><div class="timeline__body"><b>New geo — login from 2 countries</b><span>impossible travel detected</span></div><em class="risk risk--up">+0.22</em></li>
+                      <li><span class="timeline__time">11:40</span><span class="timeline__dot timeline__dot--med"></span><div class="timeline__body"><b>Unusual process — powershell -enc</b><span>rare for entity peer group</span></div><em class="risk risk--up">+0.10</em></li>
+                      <li><span class="timeline__time">09:12</span><span class="timeline__dot timeline__dot--low"></span><div class="timeline__body"><b>Normal mailbox activity</b><span>within baseline</span></div><em class="risk">+0.00</em></li>
+                    </ul>
+                  </div>
+                  <div class="panel panel--donut">
+                    <div class="panel__head"><h4>Anomaly Score</h4></div>
+                    <div class="donutwrap">
+                      <svg class="donut" viewBox="0 0 42 42" aria-hidden="true">
+                        <circle class="donut__bg" cx="21" cy="21" r="15.9"/>
+                        <circle class="donut__seg" cx="21" cy="21" r="15.9" stroke="#ff6b6b" stroke-dasharray="94 6" stroke-dashoffset="25"/>
+                      </svg>
+                      <div class="donut__center"><strong>94</strong><span>high risk</span></div>
+                    </div>
+                  </div>
+                  <div class="panel">
+                    <div class="panel__head"><h4>Riskiest Entities</h4></div>
+                    <ul class="sevbars">
+                      <li><span>svc-bot</span><span class="track"><b data-w="94%" data-bg="#ff6b6b"></b></span><em>0.94</em></li>
+                      <li><span>j.doe</span><span class="track"><b data-w="76%" data-bg="#f5b041"></b></span><em>0.76</em></li>
+                      <li><span>admin3</span><span class="track"><b data-w="58%" data-bg="#f5b041"></b></span><em>0.58</em></li>
+                      <li><span>k.lee</span><span class="track"><b data-w="32%" data-bg="#1E88E5"></b></span><em>0.32</em></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: SANDBOXING -->
+              <div class="dashview" data-view="sandbox" role="tabpanel" hidden>
+                <div class="verdict verdict--bad">
+                  <span class="verdict__ico" aria-hidden="true">⚠</span>
+                  <div class="verdict__body">
+                    <b>Verdict: MALICIOUS</b>
+                    <span>invoice_0425.xls.lnk · SHA-256 a1f9…ed3c · LNK → PowerShell dropper</span>
+                  </div>
+                  <span class="verdict__score">92<small>/100</small></span>
+                </div>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Threat Score</span><span class="kpi__val">92<small>/100</small></span><span class="kpi__delta kpi__delta--up">▲ high</span></div>
+                  <div class="kpi"><span class="kpi__label">Behaviors Observed</span><span class="kpi__val">37</span><span class="kpi__delta kpi__delta--up">12 suspicious</span></div>
+                  <div class="kpi"><span class="kpi__label">Network IOCs</span><span class="kpi__val">8</span><span class="kpi__delta kpi__delta--up">2 C2</span></div>
+                  <div class="kpi"><span class="kpi__label">Detonation Time</span><span class="kpi__val">11.4<small>s</small></span><span class="kpi__delta kpi__delta--ok">sandboxed</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Observed Behaviors</h4><span class="panel__tag">detonation log</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="feed__time">+0.4s</span><span class="feed__name">proc.spawn · powershell -enc JABz…</span><span class="badge badge--crit">T1059</span></li>
+                      <li><span class="feed__time">+1.2s</span><span class="feed__name">file.drop · %APPDATA%\svc.exe</span><span class="badge badge--high">T1105</span></li>
+                      <li><span class="feed__time">+2.7s</span><span class="feed__name">reg.set · Run\Updater (persist)</span><span class="badge badge--high">T1547</span></li>
+                      <li><span class="feed__time">+4.1s</span><span class="feed__name">net.dns · c2-beacon.example.io</span><span class="badge badge--crit">T1071</span></li>
+                      <li><span class="feed__time">+5.9s</span><span class="feed__name">net.conn · 185.x.x.x:443 (TLS)</span><span class="badge badge--crit">C2</span></li>
+                      <li><span class="feed__time">+8.3s</span><span class="feed__name">proc.inject · explorer.exe</span><span class="badge badge--high">T1055</span></li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <div class="panel__head"><h4>MITRE ATT&amp;CK</h4></div>
+                    <ul class="tags">
+                      <li>Execution</li><li>Persistence</li><li>Defense Evasion</li>
+                      <li>Command &amp; Control</li><li>Exfiltration</li><li>Process Injection</li>
+                    </ul>
+                    <div class="panel__head panel__head--mt"><h4>Network IOCs</h4></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">c2-beacon.example.io</span><span class="badge badge--crit">domain</span></li>
+                      <li><span class="sev sev--crit"></span><span class="feed__name">185.x.x.x</span><span class="badge badge--crit">ip</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">a1f9…ed3c</span><span class="badge badge--high">sha256</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: INCIDENT RESPONSE -->
+              <div class="dashview" data-view="ir" role="tabpanel" hidden>
+                <div class="verdict verdict--warn">
+                  <span class="verdict__ico" aria-hidden="true">⚑</span>
+                  <div class="verdict__body">
+                    <b>INC-2041 · Active Incident</b>
+                    <span>Compromised host WIN-DC-02 · ransomware precursor · detected 12:04</span>
+                  </div>
+                  <span class="verdict__pill">CONTAINING</span>
+                </div>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Open Incidents</span><span class="kpi__val">3</span><span class="kpi__delta kpi__delta--up">▲ 1</span></div>
+                  <div class="kpi"><span class="kpi__label">Mean Time to Contain</span><span class="kpi__val">8<small>m</small></span><span class="kpi__delta kpi__delta--down">▼ 22m</span></div>
+                  <div class="kpi"><span class="kpi__label">Containment SLA</span><span class="kpi__val">94<small>%</small></span><span class="kpi__delta kpi__delta--ok">on track</span></div>
+                  <div class="kpi"><span class="kpi__label">Severity</span><span class="kpi__val">SEV-1</span><span class="kpi__delta kpi__delta--up">critical</span></div>
+                </div>
+                <div class="panel">
+                  <div class="panel__head"><h4>Response Lifecycle — NIST IR</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>phase 3 of 6</span></div>
+                  <div class="flow">
+                    <div class="flow__step is-done"><span class="flow__ico">◎</span><span class="flow__name">Detect</span><span class="flow__sub">SIEM + UEBA</span></div>
+                    <div class="flow__step is-done"><span class="flow__ico">⚑</span><span class="flow__name">Triage</span><span class="flow__sub">SEV-1 assigned</span></div>
+                    <div class="flow__step is-run"><span class="flow__ico">▣</span><span class="flow__name">Contain</span><span class="flow__sub">isolating host</span></div>
+                    <div class="flow__step"><span class="flow__ico">✂</span><span class="flow__name">Eradicate</span><span class="flow__sub">remove artifacts</span></div>
+                    <div class="flow__step"><span class="flow__ico">↻</span><span class="flow__name">Recover</span><span class="flow__sub">restore service</span></div>
+                    <div class="flow__step"><span class="flow__ico">✓</span><span class="flow__name">Post-Incident</span><span class="flow__sub">lessons learned</span></div>
+                  </div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Response Timeline</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>live</span></div>
+                    <ul class="timeline">
+                      <li><span class="timeline__time">12:11</span><span class="timeline__dot timeline__dot--med"></span><div class="timeline__body"><b>Host network-isolated</b><span>SOAR · EDR action on WIN-DC-02</span></div><em class="risk iractor iractor--auto">AUTO</em></li>
+                      <li><span class="timeline__time">12:09</span><span class="timeline__dot timeline__dot--high"></span><div class="timeline__body"><b>Credentials revoked — svc-bot</b><span>identity playbook executed</span></div><em class="risk iractor iractor--auto">AUTO</em></li>
+                      <li><span class="timeline__time">12:07</span><span class="timeline__dot timeline__dot--high"></span><div class="timeline__body"><b>War room opened</b><span>3 responders paged · Slack #inc-2041</span></div><em class="risk iractor">A.RIZAL</em></li>
+                      <li><span class="timeline__time">12:05</span><span class="timeline__dot timeline__dot--crit"></span><div class="timeline__body"><b>Incident declared SEV-1</b><span>auto-promoted from alert</span></div><em class="risk iractor iractor--auto">AUTO</em></li>
+                      <li><span class="timeline__time">12:04</span><span class="timeline__dot timeline__dot--crit"></span><div class="timeline__body"><b>Initial detection</b><span>T1021 lateral movement</span></div><em class="risk iractor iractor--auto">SIEM</em></li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <div class="panel__head"><h4>Affected Assets</h4></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">WIN-DC-02 · domain ctrl</span><span class="badge badge--ok">isolated</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">FILE-SRV-04 · share</span><span class="badge badge--high">scanning</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">svc-bot@corp · identity</span><span class="badge badge--ok">revoked</span></li>
+                    </ul>
+                    <div class="panel__head panel__head--mt"><h4>Responders</h4></div>
+                    <ul class="responders">
+                      <li><span class="ava ava--a">AR</span>A. Rizal · <i>Lead</i></li>
+                      <li><span class="ava ava--b">SD</span>S. Dewi · <i>Forensics</i></li>
+                      <li><span class="ava ava--c">MN</span>M. Nur · <i>Comms</i></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+        <p class="appwin__disclaimer reveal" data-en="Illustrative interface — sample data shown for demonstration." data-id="Antarmuka ilustratif — data contoh untuk demonstrasi.">Illustrative interface — sample data shown for demonstration.</p>
+      </div>
+    </section>
+
+    <!-- ============================== SOLUTIONS ============================== -->
+    <section class="section section--alt" id="solutions">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="Solutions" data-id="Solusi">Solutions</p>
+          <h2 class="section__title" data-en="Built around your security outcomes" data-id="Dirancang untuk hasil keamanan Anda">Built around your security outcomes</h2>
+          <p class="section__sub" data-en="However your team is structured, the mesh adapts to the outcome you need." data-id="Apa pun struktur tim Anda, mesh beradaptasi dengan hasil yang Anda butuhkan.">However your team is structured, the mesh adapts to the outcome you need.</p>
+        </div>
+
+        <div class="grid grid--solutions">
+          <article class="solution reveal">
+            <span class="solution__no">01</span>
+            <h3 class="solution__title" data-en="Threat Detection & Response" data-id="Deteksi & Respons Ancaman">Threat Detection &amp; Response</h3>
+            <p class="solution__text" data-en="Fuse SIEM, UEBA, and sandboxing into high-fidelity detections, then trigger SOAR playbooks to respond automatically." data-id="Gabungkan SIEM, UEBA, dan sandboxing menjadi deteksi berakurasi tinggi, lalu picu playbook SOAR untuk merespons otomatis.">Fuse SIEM, UEBA, and sandboxing into high-fidelity detections, then trigger SOAR playbooks to respond automatically.</p>
+            <ul class="solution__tags"><li>SIEM</li><li>UEBA</li><li>SOAR</li><li>Sandboxing</li></ul>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">02</span>
+            <h3 class="solution__title" data-en="Security Operations Automation" data-id="Otomasi Operasi Keamanan">Security Operations Automation</h3>
+            <p class="solution__text" data-en="Standardize triage and response with playbooks, case management, and orchestration that free analysts for real threats." data-id="Standarkan triase dan respons dengan playbook, manajemen kasus, dan orkestrasi yang membebaskan analis untuk ancaman nyata.">Standardize triage and response with playbooks, case management, and orchestration that free analysts for real threats.</p>
+            <ul class="solution__tags"><li>SOAR</li><li>Case Mgmt</li><li>IR</li></ul>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">03</span>
+            <h3 class="solution__title" data-en="Asset & Configuration Visibility" data-id="Visibilitas Aset & Konfigurasi">Asset &amp; Configuration Visibility</h3>
+            <p class="solution__text" data-en="Know exactly what you have and how it connects. CMDB feeds context into every alert, investigation, and risk decision." data-id="Ketahui persis apa yang Anda miliki dan bagaimana keterhubungannya. CMDB memberi konteks ke setiap alert, investigasi, dan keputusan risiko.">Know exactly what you have and how it connects. CMDB feeds context into every alert, investigation, and risk decision.</p>
+            <ul class="solution__tags"><li>CMDB</li><li>Vuln Mgmt</li></ul>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">04</span>
+            <h3 class="solution__title" data-en="Risk & Vulnerability Management" data-id="Manajemen Risiko & Kerentanan">Risk &amp; Vulnerability Management</h3>
+            <p class="solution__text" data-en="Prioritize remediation by exploitability and asset criticality, tracking risk posture trends over time." data-id="Prioritaskan remediasi berdasarkan eksploitabilitas dan kekritisan aset, sambil memantau tren postur risiko dari waktu ke waktu.">Prioritize remediation by exploitability and asset criticality, tracking risk posture trends over time.</p>
+            <ul class="solution__tags"><li>Vuln Mgmt</li><li>CMDB</li><li>Dashboard</li></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== PLATFORM / WHY ============================== -->
+    <section class="section" id="platform">
+      <div class="container platform__inner">
+        <div class="platform__copy reveal">
+          <p class="section__eyebrow" data-en="The Mesh Advantage" data-id="Keunggulan Mesh">The Mesh Advantage</p>
+          <h2 class="section__title" data-en="Disconnected tools create blind spots. We close them." data-id="Tool yang terputus menciptakan titik buta. Kami menutupnya.">Disconnected tools create blind spots. We close them.</h2>
+          <p class="section__sub" data-en="Every NetraMesh module shares one data fabric. Context flows automatically between detection, asset intelligence, and response — no swivel-chair, no copy-paste, no gaps." data-id="Setiap modul NetraMesh berbagi satu data fabric. Konteks mengalir otomatis antara deteksi, intelijen aset, dan respons — tanpa berpindah-pindah layar, tanpa salin-tempel, tanpa celah.">Every NetraMesh module shares one data fabric. Context flows automatically between detection, asset intelligence, and response — no swivel-chair, no copy-paste, no gaps.</p>
+          <ul class="feature-list">
+            <li class="reveal"><span class="feature-list__ico" aria-hidden="true">◆</span><div><strong data-en="Unified Data Fabric" data-id="Data Fabric Terpadu">Unified Data Fabric</strong><span data-en="One normalized data model across every module." data-id="Satu model data ternormalisasi di seluruh modul.">One normalized data model across every module.</span></div></li>
+            <li class="reveal"><span class="feature-list__ico" aria-hidden="true">◆</span><div><strong data-en="Open & Interoperable" data-id="Terbuka & Interoperabel">Open &amp; Interoperable</strong><span data-en="200+ connectors and open APIs — fits your existing stack." data-id="200+ konektor dan API terbuka — cocok dengan stack Anda.">200+ connectors and open APIs — fits your existing stack.</span></div></li>
+            <li class="reveal"><span class="feature-list__ico" aria-hidden="true">◆</span><div><strong data-en="Secure by Design" data-id="Aman Sejak Desain">Secure by Design</strong><span data-en="Least-privilege, encryption everywhere, and full audit trails." data-id="Hak akses minimum, enkripsi menyeluruh, dan jejak audit penuh.">Least-privilege, encryption everywhere, and full audit trails.</span></div></li>
+            <li class="reveal"><span class="feature-list__ico" aria-hidden="true">◆</span><div><strong data-en="Deploy Your Way" data-id="Deploy Sesuai Kebutuhan">Deploy Your Way</strong><span data-en="Cloud, on-prem, or hybrid — your data stays where you decide." data-id="Cloud, on-prem, atau hybrid — data Anda tetap di tempat yang Anda tentukan.">Cloud, on-prem, or hybrid — your data stays where you decide.</span></div></li>
+          </ul>
+        </div>
+        <div class="platform__visual reveal" aria-hidden="true">
+          <div class="orbit">
+            <div class="orbit__core"><span data-en="Mesh Core" data-id="Inti Mesh">Mesh Core</span></div>
+            <span class="orbit__node" data-i="0">SIEM</span>
+            <span class="orbit__node" data-i="1">SOAR</span>
+            <span class="orbit__node" data-i="2">UEBA</span>
+            <span class="orbit__node" data-i="3">CMDB</span>
+            <span class="orbit__node" data-i="4">IR</span>
+            <span class="orbit__node" data-i="5">Vuln</span>
+            <span class="orbit__ring orbit__ring--1"></span>
+            <span class="orbit__ring orbit__ring--2"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="About Us" data-id="Tentang Kami">About Us</p>
+          <h2 class="section__title" data-en="We engineer clarity for defenders" data-id="Kami merekayasa kejelasan untuk para defender">We engineer clarity for defenders</h2>
+          <p class="section__sub" data-en="NetraMesh Labs is a cyber technology company on a mission to give security teams a single, intelligent view of their entire environment — so they can defend with confidence." data-id="NetraMesh Labs adalah perusahaan teknologi siber dengan misi memberi tim keamanan satu pandangan cerdas atas seluruh lingkungan mereka — agar dapat bertahan dengan percaya diri.">NetraMesh Labs is a cyber technology company on a mission to give security teams a single, intelligent view of their entire environment — so they can defend with confidence.</p>
+        </div>
+
+        <div class="grid grid--values">
+          <article class="value reveal">
+            <h3 class="value__title" data-en="Our Mission" data-id="Misi Kami">Our Mission</h3>
+            <p data-en="To eliminate blind spots in security operations by weaving every signal, asset, and action into one coherent mesh." data-id="Menghilangkan titik buta dalam operasi keamanan dengan menjalin setiap sinyal, aset, dan tindakan menjadi satu mesh yang koheren.">To eliminate blind spots in security operations by weaving every signal, asset, and action into one coherent mesh.</p>
+          </article>
+          <article class="value reveal">
+            <h3 class="value__title" data-en="Our Approach" data-id="Pendekatan Kami">Our Approach</h3>
+            <p data-en="Engineering-first and outcome-driven. We build modular, interoperable tools that respect your existing investments." data-id="Mengutamakan rekayasa dan berorientasi hasil. Kami membangun tool modular dan interoperabel yang menghargai investasi Anda yang ada.">Engineering-first and outcome-driven. We build modular, interoperable tools that respect your existing investments.</p>
+          </article>
+          <article class="value reveal">
+            <h3 class="value__title" data-en="Our Promise" data-id="Janji Kami">Our Promise</h3>
+            <p data-en="Security and privacy are not features — they are the foundation. Your data is yours, protected at every layer." data-id="Keamanan dan privasi bukan fitur — keduanya adalah fondasi. Data Anda milik Anda, terlindungi di setiap lapisan.">Security and privacy are not features — they are the foundation. Your data is yours, protected at every layer.</p>
+          </article>
+        </div>
+
+        <!-- Commitment / contributor manifesto -->
+        <div class="manifesto reveal">
+          <span class="manifesto__glow" aria-hidden="true"></span>
+          <p class="section__eyebrow" data-en="Our Commitment" data-id="Komitmen Kami">Our Commitment</p>
+          <h3 class="manifesto__title" data-en="Cyber resilience shouldn't be a luxury." data-id="Ketahanan siber tak seharusnya jadi barang mewah.">Cyber resilience shouldn't be a luxury.</h3>
+          <p class="manifesto__text" data-en="The contributors behind NetraMesh are practitioners, not just a vendor. We're dedicated to strengthening cyber hygiene and cyber resilience for every organization — without the barrier of the prohibitively expensive subscriptions that almost every team runs into. Closing that gap is exactly the problem NetraMesh exists to solve." data-id="Para kontributor di balik NetraMesh adalah praktisi, bukan sekadar vendor. Kami berdedikasi memperkuat cyber hygiene dan cyber resilience untuk setiap organisasi — tanpa hambatan biaya langganan yang teramat mahal, yang hampir selalu dihadapi setiap tim. Menutup kesenjangan itulah persoalan yang NetraMesh hadir untuk memecahkannya.">The contributors behind NetraMesh are practitioners, not just a vendor. We're dedicated to strengthening cyber hygiene and cyber resilience for every organization — without the barrier of the prohibitively expensive subscriptions that almost every team runs into. Closing that gap is exactly the problem NetraMesh exists to solve.</p>
+          <ul class="manifesto__points">
+            <li>
+              <span class="mp-ico" aria-hidden="true">✓</span>
+              <div>
+                <strong data-en="No paywall barriers" data-id="Tanpa hambatan paywall">No paywall barriers</strong>
+                <span data-en="Capability over costly licensing — defense you can actually afford to run." data-id="Kapabilitas di atas lisensi mahal — pertahanan yang benar-benar terjangkau untuk dijalankan.">Capability over costly licensing — defense you can actually afford to run.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mp-ico" aria-hidden="true">✓</span>
+              <div>
+                <strong data-en="Built by practitioners" data-id="Dibangun oleh praktisi">Built by practitioners</strong>
+                <span data-en="Shaped by contributors who defend real systems every single day." data-id="Dibentuk oleh kontributor yang menjaga sistem nyata setiap hari.">Shaped by contributors who defend real systems every single day.</span>
+              </div>
+            </li>
+            <li>
+              <span class="mp-ico" aria-hidden="true">✓</span>
+              <div>
+                <strong data-en="Resilience for all" data-id="Ketahanan untuk semua">Resilience for all</strong>
+                <span data-en="Cyber hygiene and resilience made accessible to organizations of any size." data-id="Cyber hygiene dan resilience yang dapat dijangkau organisasi berukuran apa pun.">Cyber hygiene and resilience made accessible to organizations of any size.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CTA / CONTACT ============================== -->
+    <section class="section contact" id="contact">
+      <div class="container contact__inner reveal">
+        <div class="contact__copy">
+          <p class="section__eyebrow" data-en="Get Started" data-id="Mulai">Get Started</p>
+          <h2 class="section__title" data-en="See the mesh in action" data-id="Lihat mesh dalam aksi">See the mesh in action</h2>
+          <p class="section__sub" data-en="Book a personalized walkthrough of the NetraMesh platform. Tell us about your environment and we'll show you exactly how the mesh closes your gaps." data-id="Jadwalkan demo personal platform NetraMesh. Ceritakan lingkungan Anda dan kami tunjukkan persis bagaimana mesh menutup celah Anda.">Book a personalized walkthrough of the NetraMesh platform. Tell us about your environment and we'll show you exactly how the mesh closes your gaps.</p>
+          <ul class="contact__list">
+            <li><span class="contact__ico" aria-hidden="true">✉</span><a href="mailto:hello@netramesh.com">hello@netramesh.com</a></li>
+            <li><span class="contact__ico" aria-hidden="true">◆</span><span>netramesh.com</span></li>
+          </ul>
+        </div>
+
+        <!-- No backend / no data storage: form composes a mailto: message client-side -->
+        <form class="contact__form" id="demoForm" novalidate>
+          <div class="field">
+            <label for="cName" data-en="Full name" data-id="Nama lengkap">Full name</label>
+            <input type="text" id="cName" name="name" autocomplete="name" maxlength="80" required />
+          </div>
+          <div class="field">
+            <label for="cEmail" data-en="Work email" data-id="Email kerja">Work email</label>
+            <input type="email" id="cEmail" name="email" autocomplete="email" maxlength="120" required />
+          </div>
+          <div class="field">
+            <label for="cCompany" data-en="Company" data-id="Perusahaan">Company</label>
+            <input type="text" id="cCompany" name="company" autocomplete="organization" maxlength="100" />
+          </div>
+          <div class="field">
+            <label for="cMsg" data-en="What would you like to solve?" data-id="Apa yang ingin Anda selesaikan?">What would you like to solve?</label>
+            <textarea id="cMsg" name="message" rows="4" maxlength="1000"></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block" data-en="Request Demo" data-id="Kirim Permintaan Demo">Request Demo</button>
+          <p class="contact__note" data-en="This static site stores no data. Submitting opens your email client with a pre-filled message." data-id="Situs statis ini tidak menyimpan data apa pun. Mengirim akan membuka aplikasi email Anda dengan pesan yang sudah terisi.">This static site stores no data. Submitting opens your email client with a pre-filled message.</p>
+          <p class="contact__status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#home" aria-label="NetraMesh Labs home">
+          <img class="brand__logo" src="assets/img/logo-icon.png" width="63" height="32" alt="" aria-hidden="true" />
+          <span class="brand__text">Netra<span class="brand__accent">Mesh</span><span class="brand__labs">Labs</span></span>
+        </a>
+        <p class="footer__tag" data-en="Cyber defense, woven into one mesh." data-id="Pertahanan siber, terjalin dalam satu mesh.">Cyber defense, woven into one mesh.</p>
+      </div>
+
+      <nav class="footer__col" aria-label="Products">
+        <h4 data-en="Products" data-id="Produk">Products</h4>
+        <a href="#products">SOC Dashboard</a>
+        <a href="#products">SIEM &amp; SOAR</a>
+        <a href="#products">UEBA</a>
+        <a href="#products">CMDB</a>
+        <a href="#products">Vulnerability Mgmt</a>
+      </nav>
+      <nav class="footer__col" aria-label="Company">
+        <h4 data-en="Company" data-id="Perusahaan">Company</h4>
+        <a href="#about" data-en="About" data-id="Tentang">About</a>
+        <a href="#solutions" data-en="Solutions" data-id="Solusi">Solutions</a>
+        <a href="#platform" data-en="Platform" data-id="Platform">Platform</a>
+        <a href="#contact" data-en="Contact" data-id="Kontak">Contact</a>
+      </nav>
+      <nav class="footer__col" aria-label="Connect">
+        <h4 data-en="Connect" data-id="Terhubung">Connect</h4>
+        <a href="mailto:hello@netramesh.com">hello@netramesh.com</a>
+        <a href="#contact" data-en="Get a Demo" data-id="Minta Demo">Get a Demo</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p>&copy; <span id="year">2026</span> NetraMesh Labs. <span data-en="All rights reserved." data-id="Hak cipta dilindungi.">All rights reserved.</span></p>
+      <p class="footer__legal" data-en="netramesh.com — No tracking. No data stored." data-id="netramesh.com — Tanpa pelacakan. Tanpa penyimpanan data.">netramesh.com — No tracking. No data stored.</p>
+    </div>
+  </footer>
+
+  <!-- ============================== COMMAND PALETTE (easter egg) ============================== -->
+  <button class="cmdk-fab" id="cmdkFab" type="button" aria-label="Open command palette">
+    <kbd class="cmdk-fab__key">/</kbd>
+    <span data-en="Commands" data-id="Perintah">Commands</span>
+  </button>
+
+  <div class="cmdk" id="cmdk" hidden>
+    <div class="cmdk__backdrop" data-cmdk-close></div>
+    <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="cmdk__inputwrap">
+        <span class="cmdk__prompt" aria-hidden="true">&gt;_</span>
+        <input type="text" id="cmdkInput" class="cmdk__input" autocomplete="off" spellcheck="false"
+               aria-label="Command" data-en-ph="Type a command or search…" data-id-ph="Ketik perintah atau cari…"
+               placeholder="Type a command or search…" />
+        <kbd class="cmdk__esc">ESC</kbd>
+      </div>
+      <ul class="cmdk__list" id="cmdkList" role="listbox" aria-label="Commands">
+        <li class="cmdk__item" data-action="products" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">▦</span>
+          <span class="cmdk__txt" data-en="Go to Products" data-id="Buka Produk">Go to Products</span>
+          <span class="cmdk__kbd">products</span>
+        </li>
+        <li class="cmdk__item" data-action="preview" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">▣</span>
+          <span class="cmdk__txt" data-en="Open Live Preview" data-id="Buka Pratinjau Langsung">Open Live Preview</span>
+          <span class="cmdk__kbd">preview</span>
+        </li>
+        <li class="cmdk__item" data-action="solutions" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">▤</span>
+          <span class="cmdk__txt" data-en="Go to Solutions" data-id="Buka Solusi">Go to Solutions</span>
+          <span class="cmdk__kbd">solutions</span>
+        </li>
+        <li class="cmdk__item" data-action="platform" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">◈</span>
+          <span class="cmdk__txt" data-en="Go to Platform" data-id="Buka Platform">Go to Platform</span>
+          <span class="cmdk__kbd">platform</span>
+        </li>
+        <li class="cmdk__item" data-action="about" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">◇</span>
+          <span class="cmdk__txt" data-en="Go to About" data-id="Buka Tentang">Go to About</span>
+          <span class="cmdk__kbd">about</span>
+        </li>
+        <li class="cmdk__item" data-action="contact" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">✉</span>
+          <span class="cmdk__txt" data-en="Request a Demo" data-id="Minta Demo">Request a Demo</span>
+          <span class="cmdk__kbd">demo</span>
+        </li>
+        <li class="cmdk__item" data-action="lang" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">⇄</span>
+          <span class="cmdk__txt" data-en="Switch language (ID / EN)" data-id="Ganti bahasa (ID / EN)">Switch language (ID / EN)</span>
+          <span class="cmdk__kbd">lang</span>
+        </li>
+        <li class="cmdk__item" data-action="email" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">@</span>
+          <span class="cmdk__txt" data-en="Email NetraMesh Labs" data-id="Email NetraMesh Labs">Email NetraMesh Labs</span>
+          <span class="cmdk__kbd">mail</span>
+        </li>
+        <li class="cmdk__item" data-action="top" role="option" tabindex="-1">
+          <span class="cmdk__ico" aria-hidden="true">↑</span>
+          <span class="cmdk__txt" data-en="Back to top" data-id="Kembali ke atas">Back to top</span>
+          <span class="cmdk__kbd">home</span>
+        </li>
+      </ul>
+      <div class="cmdk__empty" id="cmdkEmpty" hidden data-en="No matching command" data-id="Tidak ada perintah yang cocok">No matching command</div>
+      <div class="cmdk__footer" aria-hidden="true">
+        <span><kbd>↑</kbd><kbd>↓</kbd> <span data-en="navigate" data-id="navigasi">navigate</span></span>
+        <span><kbd>↵</kbd> <span data-en="run" data-id="jalankan">run</span></span>
+        <span><kbd>esc</kbd> <span data-en="close" data-id="tutup">close</span></span>
+        <span class="cmdk__footer-brand">NetraMesh</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
