@@ -1,12 +1,19 @@
 # ====== NetraMesh Labs — Apache config (security headers + HTTPS) ======
 # Use only if hosting on Apache. For Netlify/Cloudflare Pages use the _headers file instead.
 
-# Force HTTPS (handles SSL terminated upstream via X-Forwarded-Proto to avoid redirect loops)
+# Canonical host: force non-www + HTTPS.
+# Ordered so http(s)://www → https://non-www happens in a single 301 (no double hop).
 <IfModule mod_rewrite.c>
   RewriteEngine On
+
+  # (a) strip leading www. and send straight to https:// (covers http→https too for www hosts)
+  RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+  RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
+
+  # (b) force HTTPS for the bare domain (handles SSL terminated upstream via X-Forwarded-Proto)
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP:X-Forwarded-Proto} !https
-  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 <IfModule mod_headers.c>
