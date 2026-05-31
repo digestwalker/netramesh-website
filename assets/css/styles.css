@@ -374,7 +374,7 @@ ul { list-style: none; }
 
 /* Orbit visual */
 .platform__visual { display: flex; align-items: center; justify-content: center; }
-.orbit { position: relative; --size: min(420px, 80vw); --r: calc(var(--size) * 0.40); width: var(--size); aspect-ratio: 1; }
+.orbit { position: relative; --size: min(420px, 80vw); --r: calc(var(--size) * 0.40); --dur: 32s; width: var(--size); aspect-ratio: 1; }
 .orbit__core {
   position: absolute; inset: 50% auto auto 50%; transform: translate(-50%, -50%);
   width: 116px; height: 116px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
@@ -390,7 +390,11 @@ ul { list-style: none; }
 .orbit__node {
   position: absolute; inset: 50% auto auto 50%;
   --angle: calc(var(--i) * 60deg);
+  /* static fallback (shown if animation is off, e.g. reduced-motion) */
   transform: translate(-50%, -50%) rotate(var(--angle)) translateY(calc(var(--r) * -1)) rotate(calc(var(--angle) * -1));
+  /* live orbit: phase-offset per node by 1/6 cycle so they revolve evenly spaced */
+  animation: orbit var(--dur) linear infinite;
+  animation-delay: calc(var(--i) * var(--dur) / -6);
   font-family: var(--mono); font-size: .78rem; font-weight: 700; color: var(--text);
   background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 999px;
   padding: 8px 14px; box-shadow: 0 6px 18px -6px rgba(0,0,0,.6); z-index: 2; white-space: nowrap;
@@ -402,6 +406,13 @@ ul { list-style: none; }
 .orbit__node:nth-of-type(4) { --i: 3; }
 .orbit__node:nth-of-type(5) { --i: 4; }
 .orbit__node:nth-of-type(6) { --i: 5; }
+@keyframes orbit {
+  from { transform: translate(-50%, -50%) rotate(0turn) translateY(calc(var(--r) * -1)) rotate(0turn); }
+  to   { transform: translate(-50%, -50%) rotate(1turn) translateY(calc(var(--r) * -1)) rotate(-1turn); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .orbit__node { animation: none !important; }
+}
 
 /* ============================================================
    ABOUT VALUES
