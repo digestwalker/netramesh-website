@@ -4,12 +4,12 @@
 # Copies ONLY the production files into the document root — dev files
 # (tools/, master logo, README/DEPLOY docs, _headers) stay in the repo, not on the live site.
 #
-# IMPORTANT: replace CPANEL_USERNAME below with your cPanel account username.
+# IMPORTANT: replace netc3767 below with your cPanel account username.
 # For an ADDON/SUBDOMAIN, change public_html to that domain's document root
-# (e.g. /home/CPANEL_USERNAME/netramesh.com).
+# (e.g. /home/netc3767/netramesh.com).
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/CPANEL_USERNAME/public_html
+    - export DEPLOYPATH=/home/netc3767/public_html
     - /bin/mkdir -p $DEPLOYPATH/assets/css $DEPLOYPATH/assets/js $DEPLOYPATH/assets/img
     - /bin/cp -f index.html $DEPLOYPATH/
     - /bin/cp -f .htaccess $DEPLOYPATH/
