@@ -35,10 +35,51 @@
   <meta name="twitter:image" content="https://netramesh.com/assets/img/og-image.png" />
   <meta name="twitter:image:alt" content="NetraMesh Labs cyber defense platform." />
 
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/img/favicon-16.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="assets/img/apple-touch-icon.png" />
+  <link rel="manifest" href="site.webmanifest" />
   <link rel="preload" href="assets/css/styles.css" as="style" />
   <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Structured data (JSON-LD data block — not executed, CSP-safe) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://netramesh.com/#org",
+        "name": "NetraMesh Labs",
+        "alternateName": "NetraMesh",
+        "url": "https://netramesh.com/",
+        "logo": "https://netramesh.com/assets/img/icon-512.png",
+        "description": "An open security operations initiative — enterprise-grade cyber resilience for every organization, without the paywall.",
+        "email": "hello@netramesh.com",
+        "slogan": "Security without gatekeepers."
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://netramesh.com/#site",
+        "url": "https://netramesh.com/",
+        "name": "NetraMesh Labs",
+        "publisher": { "@id": "https://netramesh.com/#org" },
+        "inLanguage": ["en", "id"]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "NetraMesh",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "Cloud, on-premises, hybrid",
+        "url": "https://netramesh.com/",
+        "publisher": { "@id": "https://netramesh.com/#org" },
+        "description": "Integrated security operations: SOC Dashboard, SIEM, SOAR, UEBA, CMDB, Case Management, Incident Response, Sandboxing, Vulnerability Management, NIDS, Threat Hunting, Adversary Simulation, AI Security Engineering, and a Playbook/Runbook Library.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "description": "Free to self-host; optional support and white-label partnerships." }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <!-- Skip link for accessibility -->
@@ -69,7 +110,7 @@
             <span class="lang-toggle__sep">/</span>
             <span class="lang-toggle__opt" data-lang="id">ID</span>
           </button>
-          <a class="btn btn--primary btn--sm" href="#contact" data-en="Get a Demo" data-id="Minta Demo">Get a Demo</a>
+          <a class="btn btn--primary btn--sm" href="#contact" data-en="Get started" data-id="Mulai">Get started</a>
         </div>
       </nav>
 
@@ -95,7 +136,7 @@
           <p class="hero__lead reveal" data-en="Detection, investigation, and response — woven into one intelligent mesh. The depth the 'leaders' lock behind enterprise pricing, made adoptable by any team: run it your way, on your own infrastructure, without the paywall." data-id="Deteksi, investigasi, dan respons — terjalin dalam satu mesh cerdas. Kedalaman yang oleh para 'leader' dikunci di balik harga enterprise, kini dapat diadopsi tim mana pun: jalankan sesuai cara Anda, di infrastruktur Anda sendiri, tanpa paywall.">Detection, investigation, and response — woven into one intelligent mesh. The depth the 'leaders' lock behind enterprise pricing, made adoptable by any team: run it your way, on your own infrastructure, without the paywall.</p>
           <div class="hero__actions reveal">
             <a class="btn btn--primary" data-magnetic href="#products" data-en="Explore the Platform" data-id="Jelajahi Platform">Explore the Platform</a>
-            <a class="btn btn--ghost" href="#contact" data-en="Talk to an Expert" data-id="Hubungi Pakar">Talk to an Expert</a>
+            <a class="btn btn--ghost" href="#contact" data-en="Talk to the team" data-id="Bicara dengan Tim">Talk to the team</a>
           </div>
           <ul class="hero__trust reveal" aria-label="Capabilities">
             <li><span class="dot"></span><span data-en="No paywall, no lock-in" data-id="Tanpa paywall, tanpa lock-in">No paywall, no lock-in</span></li>
@@ -1100,6 +1141,40 @@
       </div>
     </section>
 
+    <!-- ============================== HOW IT WORKS / MODEL ============================== -->
+    <section class="section" id="how">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="How it works" data-id="Cara Kerjanya">How it works</p>
+          <h2 class="section__title" data-en="Yours to run — free of the gatekeepers" data-id="Milik Anda untuk dijalankan — bebas dari penjaga gerbang">Yours to run — free of the gatekeepers</h2>
+          <p class="section__sub" data-en="No license tax to be secure. Adopt the full mesh for free, run it where you choose, and bring in support only if and when you want it." data-id="Tanpa pajak lisensi untuk menjadi aman. Adopsi seluruh mesh secara gratis, jalankan di tempat yang Anda pilih, dan datangkan dukungan hanya bila Anda mau.">No license tax to be secure. Adopt the full mesh for free, run it where you choose, and bring in support only if and when you want it.</p>
+        </div>
+
+        <div class="grid grid--solutions">
+          <article class="solution reveal">
+            <span class="solution__no">01</span>
+            <h3 class="solution__title" data-en="Adopt it, free" data-id="Adopsi, gratis">Adopt it, free</h3>
+            <p class="solution__text" data-en="Deploy the full platform on your own infrastructure at no license cost — no per-seat, no per-GB, no feature paywall. Every module, in your hands." data-id="Terapkan seluruh platform di infrastruktur Anda tanpa biaya lisensi — tanpa per-seat, per-GB, atau paywall fitur. Setiap modul, di tangan Anda.">Deploy the full platform on your own infrastructure at no license cost — no per-seat, no per-GB, no feature paywall. Every module, in your hands.</p>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">02</span>
+            <h3 class="solution__title" data-en="Run it your way" data-id="Jalankan sesuai cara Anda">Run it your way</h3>
+            <p class="solution__text" data-en="Cloud, on-premises, or hybrid — your call. Your data stays on infrastructure you control, which keeps UU PDP and data-residency requirements straightforward." data-id="Cloud, on-prem, atau hybrid — keputusan Anda. Data tetap di infrastruktur yang Anda kendalikan, sehingga UU PDP dan residensi data jadi sederhana.">Cloud, on-premises, or hybrid — your call. Your data stays on infrastructure you control, which keeps UU PDP and data-residency requirements straightforward.</p>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">03</span>
+            <h3 class="solution__title" data-en="Support, only if you want it" data-id="Dukungan, hanya jika Anda mau">Support, only if you want it</h3>
+            <p class="solution__text" data-en="Optional managed operation, professional support, SLAs, and custom engineering — available when you need a hand, but never a prerequisite to being secure." data-id="Operasi terkelola, dukungan profesional, SLA, dan rekayasa khusus yang opsional — tersedia saat Anda butuh bantuan, tapi tak pernah jadi syarat untuk aman.">Optional managed operation, professional support, SLAs, and custom engineering — available when you need a hand, but never a prerequisite to being secure.</p>
+          </article>
+          <article class="solution reveal">
+            <span class="solution__no">04</span>
+            <h3 class="solution__title" data-en="Partner, white-label, or invest" data-id="Bermitra, white-label, atau berinvestasi">Partner, white-label, or invest</h3>
+            <p class="solution__text" data-en="Build on it, rebrand it for the organizations you serve, or back the mission. The initiative is open to partners and investors who believe resilience should reach everyone." data-id="Bangun di atasnya, rebrand untuk organisasi yang Anda layani, atau dukung misinya. Inisiatif ini terbuka untuk mitra dan investor yang percaya ketahanan harus menjangkau semua.">Build on it, rebrand it for the organizations you serve, or back the mission. The initiative is open to partners and investors who believe resilience should reach everyone.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== SECURITY & TRUST ============================== -->
     <section class="section" id="trust">
       <div class="container">
@@ -1142,17 +1217,88 @@
       </div>
     </section>
 
+    <!-- ============================== FAQ ============================== -->
+    <section class="section section--alt" id="faq">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="FAQ" data-id="FAQ">FAQ</p>
+          <h2 class="section__title" data-en="Questions, answered straight" data-id="Pertanyaan, dijawab terus terang">Questions, answered straight</h2>
+        </div>
+        <div class="faq reveal">
+          <details class="faq__item">
+            <summary><span data-en="Is NetraMesh really free?" data-id="Apakah NetraMesh benar-benar gratis?">Is NetraMesh really free?</span></summary>
+            <p data-en="Yes — the full platform is free to self-host on your own infrastructure. There's no per-seat or per-GB license, and no feature paywall. Being secure is never gated behind a price." data-id="Ya — seluruh platform gratis untuk di-self-host di infrastruktur Anda. Tanpa lisensi per-seat atau per-GB, tanpa paywall fitur. Menjadi aman tak pernah dibatasi harga.">Yes — the full platform is free to self-host on your own infrastructure. There's no per-seat or per-GB license, and no feature paywall. Being secure is never gated behind a price.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-en="Then how is it sustainable?" data-id="Lalu bagaimana keberlanjutannya?">Then how is it sustainable?</span></summary>
+            <p data-en="Through optional, opt-in services: managed operation, professional support and SLAs, custom engineering, and white-label or partnership arrangements. You pay only for help you choose — never for the right to be protected." data-id="Lewat layanan opsional: operasi terkelola, dukungan & SLA profesional, rekayasa khusus, serta pengaturan white-label atau kemitraan. Anda hanya membayar bantuan yang Anda pilih — bukan hak untuk terlindungi.">Through optional, opt-in services: managed operation, professional support and SLAs, custom engineering, and white-label or partnership arrangements. You pay only for help you choose — never for the right to be protected.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-en="How is it deployed — cloud or on-prem?" data-id="Bagaimana deploy-nya — cloud atau on-prem?">How is it deployed — cloud or on-prem?</span></summary>
+            <p data-en="Cloud, on-premises, or hybrid — you choose. Your data stays on infrastructure you control, which keeps UU PDP and data-residency requirements straightforward." data-id="Cloud, on-prem, atau hybrid — Anda yang pilih. Data tetap di infrastruktur yang Anda kendalikan, sehingga UU PDP dan residensi data jadi sederhana.">Cloud, on-premises, or hybrid — you choose. Your data stays on infrastructure you control, which keeps UU PDP and data-residency requirements straightforward.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-en="Is it production-ready and mature?" data-id="Apakah sudah production-ready dan matang?">Is it production-ready and mature?</span></summary>
+            <p data-en="It's an integrated, practitioner-built platform designed for real-world operations. We're candid about what's available today versus what's on the roadmap, and formal certifications are in progress." data-id="Ini platform terpadu buatan praktisi untuk operasi dunia nyata. Kami jujur soal yang tersedia hari ini versus yang ada di roadmap, dan sertifikasi formal sedang berjalan.">It's an integrated, practitioner-built platform designed for real-world operations. We're candid about what's available today versus what's on the roadmap, and formal certifications are in progress.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-en="Can we white-label, partner, or invest?" data-id="Bisakah white-label, bermitra, atau berinvestasi?">Can we white-label, partner, or invest?</span></summary>
+            <p data-en="Yes. The initiative is open to organizations that want to rebrand, build on, or co-develop NetraMesh — and to investors who share the mission of making resilience reach everyone." data-id="Ya. Inisiatif ini terbuka untuk organisasi yang ingin rebrand, membangun di atas, atau mengembangkan NetraMesh bersama — dan untuk investor yang sevisi membuat ketahanan menjangkau semua.">Yes. The initiative is open to organizations that want to rebrand, build on, or co-develop NetraMesh — and to investors who share the mission of making resilience reach everyone.</p>
+          </details>
+          <details class="faq__item">
+            <summary><span data-en="How do we get started?" data-id="Bagaimana cara memulainya?">How do we get started?</span></summary>
+            <p data-en="Reach out and tell us about your environment. We'll point you to the right path — adopt and self-host, run a pilot, or explore a partnership." data-id="Hubungi kami dan ceritakan lingkungan Anda. Kami arahkan ke jalur yang tepat — adopsi & self-host, jalankan pilot, atau jajaki kemitraan.">Reach out and tell us about your environment. We'll point you to the right path — adopt and self-host, run a pilot, or explore a partnership.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== RESOURCES ============================== -->
+    <section class="section" id="resources">
+      <div class="container">
+        <div class="section__head reveal">
+          <p class="section__eyebrow" data-en="Resources" data-id="Sumber Daya">Resources</p>
+          <h2 class="section__title" data-en="Built in the open, shared in the open" data-id="Dibangun terbuka, dibagikan terbuka">Built in the open, shared in the open</h2>
+          <p class="section__sub" data-en="Knowledge shouldn't be gatekept either. We're publishing our research, guides, and playbooks — here's what's on the way." data-id="Pengetahuan pun tak seharusnya dijaga gerbang. Kami menerbitkan riset, panduan, dan playbook kami — inilah yang sedang disiapkan.">Knowledge shouldn't be gatekept either. We're publishing our research, guides, and playbooks — here's what's on the way.</p>
+        </div>
+        <div class="grid grid--values">
+          <article class="value reveal">
+            <span class="value__soon" data-en="Coming soon" data-id="Segera hadir">Coming soon</span>
+            <h3 class="value__title" data-en="Threat Research" data-id="Riset Ancaman">Threat Research</h3>
+            <p data-en="Field notes, detections, and analysis drawn from real-world incidents and emerging TTPs." data-id="Catatan lapangan, deteksi, dan analisis dari insiden dunia nyata serta TTP yang muncul.">Field notes, detections, and analysis drawn from real-world incidents and emerging TTPs.</p>
+          </article>
+          <article class="value reveal">
+            <span class="value__soon" data-en="Coming soon" data-id="Segera hadir">Coming soon</span>
+            <h3 class="value__title" data-en="Deployment Docs" data-id="Dokumentasi Deploy">Deployment Docs</h3>
+            <p data-en="Step-by-step guides to adopt, configure, and run the mesh on your own infrastructure." data-id="Panduan langkah demi langkah untuk mengadopsi, mengonfigurasi, dan menjalankan mesh di infrastruktur Anda sendiri.">Step-by-step guides to adopt, configure, and run the mesh on your own infrastructure.</p>
+          </article>
+          <article class="value reveal">
+            <span class="value__soon" data-en="Coming soon" data-id="Segera hadir">Coming soon</span>
+            <h3 class="value__title" data-en="Open Playbooks &amp; Insights" data-id="Playbook &amp; Wawasan Terbuka">Open Playbooks &amp; Insights</h3>
+            <p data-en="Shareable response playbooks and practitioner write-ups — free to use, adapt, and learn from." data-id="Playbook respons yang dapat dibagikan dan tulisan praktisi — bebas dipakai, disesuaikan, dan dipelajari.">Shareable response playbooks and practitioner write-ups — free to use, adapt, and learn from.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ============================== CTA / CONTACT ============================== -->
     <section class="section contact" id="contact">
       <div class="container contact__inner reveal">
         <div class="contact__copy">
           <p class="section__eyebrow" data-en="Get Started" data-id="Mulai">Get Started</p>
           <h2 class="section__title" data-en="See the mesh in action" data-id="Lihat mesh dalam aksi">See the mesh in action</h2>
-          <p class="section__sub" data-en="Book a personalized walkthrough of the NetraMesh platform. Tell us about your environment and we'll show you exactly how the mesh closes your gaps." data-id="Jadwalkan demo personal platform NetraMesh. Ceritakan lingkungan Anda dan kami tunjukkan persis bagaimana mesh menutup celah Anda.">Book a personalized walkthrough of the NetraMesh platform. Tell us about your environment and we'll show you exactly how the mesh closes your gaps.</p>
+          <p class="section__sub" data-en="Tell us about your environment — whether you want to adopt and self-host, run a pilot, explore a partnership, or just see the mesh in action. No sales pressure." data-id="Ceritakan lingkungan Anda — entah ingin mengadopsi & self-host, menjalankan pilot, menjajaki kemitraan, atau sekadar melihat mesh beraksi. Tanpa tekanan penjualan.">Tell us about your environment — whether you want to adopt and self-host, run a pilot, explore a partnership, or just see the mesh in action. No sales pressure.</p>
           <ul class="contact__list">
             <li><span class="contact__ico" aria-hidden="true">✉</span><a href="mailto:hello@netramesh.com">hello@netramesh.com</a></li>
             <li><span class="contact__ico" aria-hidden="true">◆</span><span>netramesh.com</span></li>
           </ul>
+          <div class="contact__paths">
+            <p class="contact__paths-label" data-en="Reach the right desk" data-id="Hubungi bagian yang tepat">Reach the right desk</p>
+            <a href="mailto:hello@netramesh.com?subject=Adopt%20%2F%20Self-host" data-en="Adopt &amp; self-host →" data-id="Adopsi &amp; self-host →">Adopt &amp; self-host →</a>
+            <a href="mailto:hello@netramesh.com?subject=Partnership%20%2F%20White-label" data-en="Partner / white-label →" data-id="Mitra / white-label →">Partner / white-label →</a>
+            <a href="mailto:hello@netramesh.com?subject=Investment%20%2F%20Backing%20the%20mission" data-en="Invest in the mission →" data-id="Investasi di misi →">Invest in the mission →</a>
+            <a href="/.well-known/security.txt" data-en="Report a security issue →" data-id="Laporkan masalah keamanan →">Report a security issue →</a>
+          </div>
         </div>
 
         <!-- No backend / no data storage: form composes a mailto: message client-side -->
@@ -1173,7 +1319,7 @@
             <label for="cMsg" data-en="What would you like to solve?" data-id="Apa yang ingin Anda selesaikan?">What would you like to solve?</label>
             <textarea id="cMsg" name="message" rows="4" maxlength="1000"></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--block" data-en="Request Demo" data-id="Kirim Permintaan Demo">Request Demo</button>
+          <button type="submit" class="btn btn--primary btn--block" data-en="Get in touch" data-id="Hubungi Kami">Get in touch</button>
           <p class="contact__note" data-en="This static site stores no data. Submitting opens your email client with a pre-filled message." data-id="Situs statis ini tidak menyimpan data apa pun. Mengirim akan membuka aplikasi email Anda dengan pesan yang sudah terisi.">This static site stores no data. Submitting opens your email client with a pre-filled message.</p>
           <p class="contact__status" id="formStatus" role="status" aria-live="polite"></p>
         </form>
@@ -1211,7 +1357,7 @@
       <nav class="footer__col" aria-label="Connect">
         <h4 data-en="Connect" data-id="Terhubung">Connect</h4>
         <a href="mailto:hello@netramesh.com">hello@netramesh.com</a>
-        <a href="#contact" data-en="Get a Demo" data-id="Minta Demo">Get a Demo</a>
+        <a href="#contact" data-en="Get started" data-id="Mulai">Get started</a>
         <a href="mailto:hello@netramesh.com?subject=Adopt%20%2F%20White-label%20%2F%20Partner" data-en="Adopt · White-label · Partner" data-id="Adopsi · White-label · Mitra">Adopt · White-label · Partner</a>
         <a href="privacy.html" data-en="Privacy Policy" data-id="Kebijakan Privasi">Privacy Policy</a>
         <a href="/.well-known/security.txt" data-en="Security &amp; Disclosure" data-id="Keamanan &amp; Pengungkapan">Security &amp; Disclosure</a>
@@ -1267,7 +1413,7 @@
         </li>
         <li class="cmdk__item" data-action="contact" role="option" tabindex="-1">
           <span class="cmdk__ico" aria-hidden="true">✉</span>
-          <span class="cmdk__txt" data-en="Request a Demo" data-id="Minta Demo">Request a Demo</span>
+          <span class="cmdk__txt" data-en="Talk to the team" data-id="Bicara dengan Tim">Talk to the team</span>
           <span class="cmdk__kbd">demo</span>
         </li>
         <li class="cmdk__item" data-action="lang" role="option" tabindex="-1">

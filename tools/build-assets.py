@@ -125,6 +125,32 @@ for y in range(ah):
             atouch[dp+2] = int(NAVY[2]*(1-a)+ai[s+2]*a); atouch[dp+3] = 255
 write_png(IMGDIR + "/apple-touch-icon.png", AS, AS, atouch); print("apple-touch-icon.png 180x180")
 
+def make_icon(size, bg=None, padfrac=0.08):
+    pad = int(size*padfrac); iw = size-2*pad; ih = round(ich*iw/icw)
+    if ih > size-2*pad: ih = size-2*pad; iw = round(icw*ih/ich)
+    ic = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, iw, ih)
+    out = bytearray(size*size*4)
+    if bg:
+        for i in range(size*size):
+            o = i*4; out[o] = bg[0]; out[o+1] = bg[1]; out[o+2] = bg[2]; out[o+3] = 255
+    ox = (size-iw)//2; oy = (size-ih)//2
+    for y in range(ih):
+        for x in range(iw):
+            s = (y*iw+x)*4; a = ic[s+3]/255.0
+            if a <= 0: continue
+            dp = ((oy+y)*size+(ox+x))*4
+            if bg:
+                out[dp] = int(bg[0]*(1-a)+ic[s]*a); out[dp+1] = int(bg[1]*(1-a)+ic[s+1]*a)
+                out[dp+2] = int(bg[2]*(1-a)+ic[s+2]*a); out[dp+3] = 255
+            else:
+                out[dp:dp+4] = ic[s:s+4]
+    return out
+# transparent tab favicons + opaque PWA icons (navy)
+write_png(IMGDIR + "/favicon-16.png", 16, 16, make_icon(16)); print("favicon-16.png")
+write_png(IMGDIR + "/favicon-32.png", 32, 32, make_icon(32)); print("favicon-32.png")
+write_png(IMGDIR + "/icon-192.png", 192, 192, make_icon(192, NAVY, 0.14)); print("icon-192.png")
+write_png(IMGDIR + "/icon-512.png", 512, 512, make_icon(512, NAVY, 0.14)); print("icon-512.png")
+
 # ===================== OG image 1200x630 =====================
 W, H = 1200, 630
 buf = bytearray(W*H*3)
