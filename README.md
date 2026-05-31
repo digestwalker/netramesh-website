@@ -123,6 +123,12 @@ automatically) or any **Nginx/Apache** host.
 - **Brand assets:** drop a new master logo at `assets/img/NetraMeshLabs.png`, then run
   `python3 tools/build-assets.py` to regenerate `logo-icon.png`, `favicon.png`,
   `apple-touch-icon.png`, and `og-image.png`.
+- **Walkthrough video (Preview section):** when the recording is ready, save it to
+  `assets/video/walkthrough.mp4`, then in `index.html` (the `WALKTHROUGH VIDEO SLOT` comment)
+  replace the `.walkthrough__ph` placeholder with the `<video>` snippet shown there. Also add a
+  copy line to `.cpanel.yml` (e.g. `/bin/mkdir -p "$HOME/public_html/assets/video"` and
+  `/bin/cp -f assets/video/walkthrough.mp4 "$HOME/public_html/assets/video/"`). `media-src 'self'`
+  is already allowed by the CSP. Keep it self-hosted (no third-party embeds) to honor "no trackers".
 
 ## 🌍 Languages
 

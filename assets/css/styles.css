@@ -754,6 +754,16 @@ html[lang="id"] .card[data-goto]::after { content: "Lihat di konsol →"; }
 
 .appwin__disclaimer { text-align: center; color: var(--slate); font-size: .8rem; margin-top: 16px; font-family: var(--mono); }
 
+/* Walkthrough video slot */
+.walkthrough { max-width: 880px; margin: 36px auto 0; }
+.walkthrough__video, .walkthrough__ph { width: 100%; aspect-ratio: 16 / 9; border-radius: 16px; border: 1px solid var(--border-strong); display: block; }
+.walkthrough__video { background: #000; }
+.walkthrough__ph { background: radial-gradient(circle at 50% 38%, rgba(30,136,229,0.16), var(--surface) 72%); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; text-align: center; padding: 20px; }
+.walkthrough__play { width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; padding-left: 4px; color: #fff; background: linear-gradient(135deg, var(--electric-blue), var(--cyber-blue)); box-shadow: 0 14px 34px -10px var(--glow); margin-bottom: 8px; }
+.walkthrough__t { color: var(--heading); font-weight: 700; font-size: 1.1rem; }
+.walkthrough__s { color: var(--text-dim); font-size: .92rem; max-width: 440px; }
+.walkthrough__soon { margin-top: 6px; font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--electric-blue); background: rgba(30,136,229,0.12); border: 1px solid var(--border-strong); border-radius: 999px; padding: 3px 10px; }
+
 /* ============================================================
    FAQ · RESOURCES · CONTACT PATHS
    ============================================================ */

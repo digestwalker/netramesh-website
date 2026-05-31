@@ -6,7 +6,7 @@
 
   <!-- ====== SECURITY HEADERS (meta-level; also enforced server-side via _headers) ====== -->
   <meta http-equiv="Content-Security-Policy"
-    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
+    content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self'; form-action 'self' mailto:; frame-ancestors 'none'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests" />
   <meta http-equiv="X-Content-Type-Options" content="nosniff" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
 
@@ -965,6 +965,22 @@
           </div>
         </div>
         <p class="appwin__disclaimer reveal" data-en="Illustrative interface — sample data shown for demonstration." data-id="Antarmuka ilustratif — data contoh untuk demonstrasi.">Illustrative interface — sample data shown for demonstration.</p>
+
+        <!-- WALKTHROUGH VIDEO SLOT.
+             When the recording is ready, drop the file at assets/video/walkthrough.mp4 and
+             replace the .walkthrough__ph block below with:
+               <video class="walkthrough__video" controls playsinline preload="none" poster="assets/img/og-image.png">
+                 <source src="assets/video/walkthrough.mp4" type="video/mp4" />
+               </video>
+             (media-src 'self' is already allowed in the CSP). -->
+        <div class="walkthrough reveal" id="walkthrough">
+          <div class="walkthrough__ph" role="img" aria-label="Product walkthrough video — coming soon">
+            <span class="walkthrough__play" aria-hidden="true">▶</span>
+            <p class="walkthrough__t" data-en="Watch the real platform in motion" data-id="Lihat platform nyata dalam aksi">Watch the real platform in motion</p>
+            <p class="walkthrough__s" data-en="A full walkthrough recording of the live platform is on its way." data-id="Rekaman walkthrough lengkap platform langsung sedang disiapkan.">A full walkthrough recording of the live platform is on its way.</p>
+            <span class="walkthrough__soon" data-en="Coming soon" data-id="Segera hadir">Coming soon</span>
+          </div>
+        </div>
       </div>
     </section>
 
