@@ -320,6 +320,13 @@ ul { list-style: none; }
 .section__sub { color: var(--text-dim); font-size: 1.05rem; }
 .bridge { max-width: 860px; margin: 44px auto 0; text-align: center; font-size: clamp(1.08rem, 2.2vw, 1.4rem); line-height: 1.55; color: var(--heading); font-weight: 600; border-top: 1px solid var(--border); padding-top: 38px; }
 
+/* Brand name-story + rallying cry */
+.namestory { text-align: center; max-width: 780px; margin: 4px auto 52px; }
+.namestory__name { font-family: var(--mono); font-size: .95rem; letter-spacing: .5px; color: var(--text-dim); margin-bottom: 16px; }
+.namestory__name b { color: var(--electric-blue); }
+.namestory__cry { font-size: clamp(1.6rem, 4.2vw, 2.6rem); font-weight: 800; letter-spacing: -.6px; line-height: 1.12; color: var(--heading); }
+.namestory__sub { color: var(--text-dim); font-size: 1.04rem; max-width: 660px; margin: 16px auto 0; }
+
 .grid { display: grid; gap: 22px; }
 
 /* ---------- Product cards ---------- */
