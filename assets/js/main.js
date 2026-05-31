@@ -643,4 +643,120 @@
     }, { rootMargin: "-74px 0px -72% 0px", threshold: 0 });
     spySections.forEach(function (s) { spy.observe(s); });
   }
+
+  /* ---------- 20. Name-story mesh: chaos → woven, controlled mesh ---------- */
+  var sc = document.getElementById("storyMesh");
+  if (sc && sc.getContext) {
+    var sctx = sc.getContext("2d");
+    var sdpr = Math.min(window.devicePixelRatio || 1, 2);
+    var SW2 = 0, SH2 = 0, sn = [], sedges = [], link = 0, c = 0, entered = false, sraf = null, stick = 0, spk = [];
+
+    function ssize() {
+      var r = sc.getBoundingClientRect();
+      SW2 = r.width; SH2 = r.height;
+      sc.width = Math.floor(SW2 * sdpr); sc.height = Math.floor(SH2 * sdpr);
+      sctx.setTransform(sdpr, 0, 0, sdpr, 0, 0);
+      seedStory();
+    }
+    function seedStory() {
+      var n = Math.max(16, Math.min(34, Math.round(SW2 / 30)));
+      var cols = Math.max(4, Math.round(Math.sqrt(n * SW2 / Math.max(SH2, 1))));
+      var rows = Math.ceil(n / cols);
+      link = (SW2 / cols) * 1.55;
+      sn = []; spk = [];
+      var k = 0;
+      for (var r = 0; r < rows; r++) {
+        for (var col = 0; col < cols; col++) {
+          if (k >= n) break;
+          var hx = (col + 0.5) / cols * SW2 + (Math.random() - 0.5) * (SW2 / cols) * 0.5;
+          var hy = (r + 0.5) / rows * SH2 + (Math.random() - 0.5) * (SH2 / rows) * 0.5;
+          sn.push({
+            hx: hx, hy: hy,
+            x: Math.random() * SW2, y: Math.random() * SH2,
+            vx: (Math.random() - 0.5) * 1.4, vy: (Math.random() - 0.5) * 1.4,
+            ph: Math.random() * 6.28, dx: 0, dy: 0
+          });
+          k++;
+        }
+      }
+      sedges = [];
+      for (var i = 0; i < sn.length; i++)
+        for (var j = i + 1; j < sn.length; j++) {
+          var d = Math.hypot(sn[i].hx - sn[j].hx, sn[i].hy - sn[j].hy);
+          if (d < link) sedges.push([i, j]);
+        }
+    }
+    function easeInOut(t) { return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2; }
+
+    function drawStory(staticMode) {
+      sctx.clearRect(0, 0, SW2, SH2);
+      var e = staticMode ? 1 : easeInOut(c);
+      stick++;
+      // resolve display positions
+      for (var i = 0; i < sn.length; i++) {
+        var p = sn[i];
+        if (!staticMode) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0 || p.x > SW2) p.vx *= -1;
+          if (p.y < 0 || p.y > SH2) p.vy *= -1;
+        }
+        var breathe = staticMode ? 0 : Math.sin(stick * 0.02 + p.ph) * 3;
+        p.dx = p.x + (p.hx + breathe - p.x) * e;
+        p.dy = p.y + (p.hy - breathe - p.y) * e;
+      }
+      // edges (tighten as it converges)
+      for (var k2 = 0; k2 < sedges.length; k2++) {
+        var a = sn[sedges[k2][0]], b = sn[sedges[k2][1]];
+        var dd = Math.hypot(a.dx - b.dx, a.dy - b.dy);
+        var lim = link * 1.25;
+        if (dd < lim) {
+          var al = e * (1 - dd / lim) * 0.6;
+          if (al > 0.01) {
+            sctx.strokeStyle = "rgba(30,136,229," + al.toFixed(3) + ")";
+            sctx.lineWidth = 1;
+            sctx.beginPath(); sctx.moveTo(a.dx, a.dy); sctx.lineTo(b.dx, b.dy); sctx.stroke();
+          }
+        }
+      }
+      // nodes
+      for (var m = 0; m < sn.length; m++) {
+        var nb = 0.45 + 0.45 * e;
+        sctx.fillStyle = "rgba(103,192,255," + nb.toFixed(3) + ")";
+        sctx.beginPath(); sctx.arc(sn[m].dx, sn[m].dy, 1.8 + 0.8 * e, 0, 6.2832); sctx.fill();
+      }
+      // control pulses once woven
+      if (!staticMode && e > 0.9 && sedges.length) {
+        if (stick % 26 === 0 && spk.length < 5) spk.push({ ed: sedges[(stick * 7) % sedges.length], p: 0 });
+        for (var s2 = spk.length - 1; s2 >= 0; s2--) {
+          var pk = spk[s2]; pk.p += 0.03;
+          if (pk.p >= 1) { spk.splice(s2, 1); continue; }
+          var na = sn[pk.ed[0]], nc = sn[pk.ed[1]];
+          var px = na.dx + (nc.dx - na.dx) * pk.p, py = na.dy + (nc.dy - na.dy) * pk.p;
+          sctx.fillStyle = "rgba(160,210,255,0.95)";
+          sctx.beginPath(); sctx.arc(px, py, 2, 0, 6.2832); sctx.fill();
+        }
+      }
+    }
+    function loopStory() {
+      if (c < 1) c += 0.0065;
+      drawStory(false);
+      sraf = requestAnimationFrame(loopStory);
+    }
+    function startStory() { if (!sraf) loopStory(); }
+    function stopStory() { if (sraf) { cancelAnimationFrame(sraf); sraf = null; } }
+
+    window.addEventListener("resize", ssize);
+    ssize();
+
+    if (prefersReduced) {
+      c = 1; drawStory(true);
+    } else if ("IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { c = 0; startStory(); }   // replay the chaos→order story each time it enters
+          else stopStory();
+        });
+      }, { threshold: 0.25 }).observe(sc);
+    } else { startStory(); }
+  }
 })();
