@@ -141,7 +141,7 @@
       var bodyLines = [
         "Name: " + name,
         "Email: " + email,
-        "Company: " + (company || "-"),
+        "Organization: " + (company || "-"),
         "",
         (message || "(No additional details provided.)")
       ];
