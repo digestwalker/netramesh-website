@@ -1,19 +1,21 @@
 #!/usr/bin/env python3
-"""Build NetraMesh brand assets from the uploaded logo (pure stdlib, no deps):
-  - assets/img/logo-icon.png   (tight eye+mesh icon, transparent) for navbar/footer
-  - assets/img/favicon.png     (64x64, eye icon centered)
-  - assets/img/og-image.png    (1200x630 share card, real logo composited)
+"""Build NetraMesh Labs brand assets from the uploaded logo (pure stdlib, no deps):
+  - assets/img/logo-icon.png        (eye+mesh icon, transparent) for navbar/footer
+  - assets/img/favicon.png          (64x64)
+  - assets/img/apple-touch-icon.png (180x180, navy bg)
+  - assets/img/og-image.png         (1200x630 share card)
+
+The OG card uses a hand-built ANTI-ALIASED monoline vector font (not a bitmap),
+so its typography reads clean/modern and stays consistent with the site.
 """
 import zlib, struct, math, os
 
-# Paths are relative to this script (tools/), so the repo is portable.
 IMGDIR = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "assets", "img"))
 SRC = os.path.join(IMGDIR, "NetraMeshLabs.png")
 
 # ===================== PNG decode (8-bit RGBA) =====================
 def decode_png(path):
-    d = open(path, "rb").read()
-    pos = 8; W = Hh = 0; idat = b''
+    d = open(path, "rb").read(); pos = 8; W = Hh = 0; idat = b''
     while pos < len(d):
         ln = struct.unpack(">I", d[pos:pos+4])[0]; typ = d[pos+4:pos+8]
         data = d[pos+8:pos+8+ln]; pos += 12+ln
@@ -57,10 +59,8 @@ def write_png(path, w, h, rgba, rgb_only=False):
     with open(path, "wb") as f:
         f.write(b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', ihdr) + chunk(b'IDAT', idat) + chunk(b'IEND', b''))
 
-# ===================== area-average downscale (premultiplied) =====================
 def downscale(src, sw, sh, x0, y0, x1, y1, tw, th):
-    out = bytearray(tw*th*4)
-    bw = (x1-x0)/tw; bh = (y1-y0)/th
+    out = bytearray(tw*th*4); bw = (x1-x0)/tw; bh = (y1-y0)/th
     for ty in range(th):
         iy0 = int(y0+ty*bh); iy1 = max(int(math.ceil(y0+(ty+1)*bh)), iy0+1)
         for tx in range(tw):
@@ -74,7 +74,7 @@ def downscale(src, sw, sh, x0, y0, x1, y1, tw, th):
             oo = (ty*tw+tx)*4
             if aa > 0:
                 out[oo] = min(255, int(ar/aa)); out[oo+1] = min(255, int(ag/aa))
-                out[oo+2] = min(255, int(ab/aa)); out[oo+3] = int(aa/max(n,1)*255)
+                out[oo+2] = min(255, int(ab/aa)); out[oo+3] = int(aa/max(n, 1)*255)
             else:
                 out[oo+3] = 0
     return out
@@ -91,137 +91,173 @@ def content_bbox(src, sw, sh, xmin, xmax):
                 if y > y1: y1 = y
     return x0, y0, x1+1, y1+1
 
-# ===================== build icon + favicon =====================
+# ===================== icon / favicon / apple =====================
 SW, SH, SRCPX = decode_png(SRC)
-# icon lives left of the gap (~x448); text is to the right
 ix0, iy0, ix1, iy1 = content_bbox(SRCPX, SW, SH, 0, 448)
 icw, ich = ix1-ix0, iy1-iy0
-print(f"icon bbox: x{ix0}-{ix1} y{iy0}-{iy1}  ({icw}x{ich})")
+print(f"icon bbox: {icw}x{ich}")
 
-# logo-icon.png : preserve aspect, target height 160
-LH = 160; LW = round(icw * LH / ich)
-icon_full = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, LW, LH)
-write_png(IMGDIR + "/logo-icon.png", LW, LH, icon_full)
+LH = 160; LW = round(icw*LH/ich)
+write_png(IMGDIR + "/logo-icon.png", LW, LH, downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, LW, LH))
 print("logo-icon.png", LW, "x", LH)
 
-# favicon.png : 64x64, icon centered (fit width)
-FS = 64; pad = 4; fw = FS-2*pad; fh = round(ich * fw / icw)
+FS = 64; pad = 4; fw = FS-2*pad; fh = round(ich*fw/icw)
 if fh > FS-2*pad: fh = FS-2*pad; fw = round(icw*fh/ich)
 fav_icon = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, fw, fh)
-fav = bytearray(FS*FS*4)
-ox = (FS-fw)//2; oy = (FS-fh)//2
+fav = bytearray(FS*FS*4); ox = (FS-fw)//2; oy = (FS-fh)//2
 for y in range(fh):
     for x in range(fw):
-        s = (y*fw+x)*4; dpx = ((oy+y)*FS+(ox+x))*4
-        fav[dpx:dpx+4] = fav_icon[s:s+4]
-write_png(IMGDIR + "/favicon.png", FS, FS, fav)
-print("favicon.png 64x64")
+        s = (y*fw+x)*4; fav[((oy+y)*FS+(ox+x))*4:((oy+y)*FS+(ox+x))*4+4] = fav_icon[s:s+4]
+write_png(IMGDIR + "/favicon.png", FS, FS, fav); print("favicon.png 64x64")
 
-# apple-touch-icon.png : 180x180, solid navy background, eye centered
 AS = 180; NAVY = (15, 23, 42)
 atouch = bytearray(AS*AS*4)
 for i in range(AS*AS):
-    o = i*4; atouch[o]=NAVY[0]; atouch[o+1]=NAVY[1]; atouch[o+2]=NAVY[2]; atouch[o+3]=255
-aw = 150; ah = round(ich*aw/icw)
-ai = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, aw, ah)
+    o = i*4; atouch[o] = NAVY[0]; atouch[o+1] = NAVY[1]; atouch[o+2] = NAVY[2]; atouch[o+3] = 255
+aw = 150; ah = round(ich*aw/icw); ai = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, aw, ah)
 axo = (AS-aw)//2; ayo = (AS-ah)//2
 for y in range(ah):
     for x in range(aw):
         s = (y*aw+x)*4; a = ai[s+3]/255.0
         if a > 0:
             dp = ((ayo+y)*AS+(axo+x))*4
-            atouch[dp]   = int(NAVY[0]*(1-a)+ai[s]*a)
-            atouch[dp+1] = int(NAVY[1]*(1-a)+ai[s+1]*a)
-            atouch[dp+2] = int(NAVY[2]*(1-a)+ai[s+2]*a)
-            atouch[dp+3] = 255
-write_png(IMGDIR + "/apple-touch-icon.png", AS, AS, atouch)
-print("apple-touch-icon.png 180x180")
+            atouch[dp] = int(NAVY[0]*(1-a)+ai[s]*a); atouch[dp+1] = int(NAVY[1]*(1-a)+ai[s+1]*a)
+            atouch[dp+2] = int(NAVY[2]*(1-a)+ai[s+2]*a); atouch[dp+3] = 255
+write_png(IMGDIR + "/apple-touch-icon.png", AS, AS, atouch); print("apple-touch-icon.png 180x180")
 
 # ===================== OG image 1200x630 =====================
 W, H = 1200, 630
 buf = bytearray(W*H*3)
-NAVY_TOP=(8,13,26); NAVY_BOT=(15,23,42); EBLUE=(30,136,229); LBLUE=(103,192,255)
-WHITE=(248,250,252); SLATE=(120,139,168); DIMBLUE=(26,54,96)
+NAVY_TOP = (8, 13, 26); NAVY_BOT = (15, 23, 42); EBLUE = (30, 136, 229)
+LBLUE = (103, 192, 255); WHITE = (248, 250, 252); SLATE = (128, 147, 176); DIMBLUE = (26, 54, 96)
 
 def setpx(x, y, c, a=1.0):
-    if 0 <= x < W and 0 <= y < H:
-        i = (y*W+x)*3
-        if a >= 1.0: buf[i], buf[i+1], buf[i+2] = c
+    xi = int(x); yi = int(y)
+    if 0 <= xi < W and 0 <= yi < H and a > 0:
+        i = (yi*W+xi)*3
+        if a >= 1: buf[i], buf[i+1], buf[i+2] = c
         else:
-            buf[i]=int(buf[i]*(1-a)+c[0]*a); buf[i+1]=int(buf[i+1]*(1-a)+c[1]*a); buf[i+2]=int(buf[i+2]*(1-a)+c[2]*a)
+            buf[i] = int(buf[i]*(1-a)+c[0]*a); buf[i+1] = int(buf[i+1]*(1-a)+c[1]*a); buf[i+2] = int(buf[i+2]*(1-a)+c[2]*a)
 
+# background gradient + radial glow
 gx, gy, gr = 930, 150, 560
 for y in range(H):
     t = y/(H-1)
-    br=int(NAVY_TOP[0]+(NAVY_BOT[0]-NAVY_TOP[0])*t); bg=int(NAVY_TOP[1]+(NAVY_BOT[1]-NAVY_TOP[1])*t); bb=int(NAVY_TOP[2]+(NAVY_BOT[2]-NAVY_TOP[2])*t)
-    row=(y*W)*3
+    br = int(NAVY_TOP[0]+(NAVY_BOT[0]-NAVY_TOP[0])*t); bg = int(NAVY_TOP[1]+(NAVY_BOT[1]-NAVY_TOP[1])*t); bb = int(NAVY_TOP[2]+(NAVY_BOT[2]-NAVY_TOP[2])*t)
+    row = y*W*3
     for x in range(W):
-        r,g,b=br,bg,bb; d=math.hypot(x-gx,y-gy)
-        if d<gr:
-            f=(1-d/gr)**2*0.45; r=min(255,int(r+EBLUE[0]*f)); g=min(255,int(g+EBLUE[1]*f)); b=min(255,int(b+EBLUE[2]*f))
-        i=row+x*3; buf[i],buf[i+1],buf[i+2]=r,g,b
+        r, g, b = br, bg, bb; d = math.hypot(x-gx, y-gy)
+        if d < gr:
+            f = (1-d/gr)**2*0.42; r = min(255, int(r+EBLUE[0]*f)); g = min(255, int(g+EBLUE[1]*f)); b = min(255, int(b+EBLUE[2]*f))
+        i = row+x*3; buf[i], buf[i+1], buf[i+2] = r, g, b
 
-def line(x0,y0,x1,y1,c,a=1.0):
-    dx=abs(x1-x0);dy=abs(y1-y0);sx=1 if x0<x1 else -1;sy=1 if y0<y1 else -1;err=dx-dy
-    while True:
-        setpx(x0,y0,c,a)
-        if x0==x1 and y0==y1:break
-        e2=2*err
-        if e2>-dy:err-=dy;x0+=sx
-        if e2<dx:err+=dx;y0+=sy
-def disc(cx,cy,r,c,a=1.0):
-    for yy in range(cy-r,cy+r+1):
-        for xx in range(cx-r,cx+r+1):
-            if (xx-cx)**2+(yy-cy)**2<=r*r: setpx(xx,yy,c,a)
-def rect(x,y,w,h,c):
-    for yy in range(y,y+h):
-        for xx in range(x,x+w): setpx(xx,yy,c)
+def line_seg(x0, y0, x1, y1, c, w, a=1.0):
+    """Anti-aliased thick segment (rounded) via distance field."""
+    minx = int(min(x0, x1)-w-1); maxx = int(max(x0, x1)+w+1)
+    miny = int(min(y0, y1)-w-1); maxy = int(max(y0, y1)+w+1)
+    dx = x1-x0; dy = y1-y0; L2 = dx*dx+dy*dy
+    hw = w/2.0
+    for py in range(miny, maxy+1):
+        for px in range(minx, maxx+1):
+            if L2 == 0: dist = math.hypot(px-x0, py-y0)
+            else:
+                tt = ((px-x0)*dx+(py-y0)*dy)/L2
+                tt = 0 if tt < 0 else (1 if tt > 1 else tt)
+                dist = math.hypot(px-(x0+tt*dx), py-(y0+tt*dy))
+            cov = hw - dist + 0.5
+            if cov > 0: setpx(px, py, c, min(1.0, cov)*a)
 
-# decorative mesh upper-right
-nodes=[(770,70),(880,130),(1010,90),(1110,180),(960,210),(820,230),(1060,290),(900,310),(1140,90),(740,170)]
+def disc(cx, cy, r, c, a=1.0):
+    for py in range(int(cy-r-1), int(cy+r+2)):
+        for px in range(int(cx-r-1), int(cx+r+2)):
+            cov = r - math.hypot(px-cx, py-cy) + 0.5
+            if cov > 0: setpx(px, py, c, min(1.0, cov)*a)
+
+def polyline(pts, sx, sy, s, c, w):
+    for k in range(len(pts)-1):
+        line_seg(sx+pts[k][0]*s, sy+pts[k][1]*s, sx+pts[k+1][0]*s, sy+pts[k+1][1]*s, c, w)
+
+def arc(cx, cy, rx, ry, a0, a1, n=14):
+    return [[cx+rx*math.cos(math.radians(a)), cy+ry*math.sin(math.radians(a))]
+            for a in [a0+(a1-a0)*i/n for i in range(n+1)]]
+
+# ---- monoline vector font (glyph = list of polylines in a 6x10 unit box, y down) ----
+def _bowl(cx, cy, rx, ry): return arc(cx, cy, rx, ry, -90, 90, 9)
+G = {
+ 'A': [[[0.6,9.2],[3,0.8],[5.4,9.2]],[[1.7,6.2],[4.3,6.2]]],
+ 'B': [[[1,0.8],[1,9.2]]] + [_bowl(1,2.85,3.3,2.05)] + [_bowl(1,7.05,3.8,2.15)],
+ 'C': [arc(3,5,2.4,4.2,52,308,16)],
+ 'D': [[[1,0.8],[1,9.2]], arc(1,5,4.2,4.2,-90,90,12)],
+ 'E': [[[1,0.8],[1,9.2]],[[1,0.8],[5,0.8]],[[1,5],[4.3,5]],[[1,9.2],[5,9.2]]],
+ 'F': [[[1,0.8],[1,9.2]],[[1,0.8],[5,0.8]],[[1,5],[4.3,5]]],
+ 'G': [arc(3,5,2.4,4.2,52,310,16),[[5.0,5.3],[3.3,5.3]],[[5.0,5.3],[5.0,7.6]]],
+ 'H': [[[1,0.8],[1,9.2]],[[5,0.8],[5,9.2]],[[1,5],[5,5]]],
+ 'I': [[[3,0.8],[3,9.2]],[[1.8,0.8],[4.2,0.8]],[[1.8,9.2],[4.2,9.2]]],
+ 'K': [[[1,0.8],[1,9.2]],[[1,5.3],[5,0.8]],[[1.9,4.3],[5,9.2]]],
+ 'L': [[[1,0.8],[1,9.2],[5,9.2]]],
+ 'M': [[[1,9.2],[1,0.8],[3,4.8],[5,0.8],[5,9.2]]],
+ 'N': [[[1,9.2],[1,0.8],[5,9.2],[5,0.8]]],
+ 'O': [arc(3,5,2.3,4.15,0,360,20)],
+ 'P': [[[1,0.8],[1,9.2]]] + [_bowl(1,2.8,3.6,2.0)],
+ 'R': [[[1,0.8],[1,9.2]]] + [_bowl(1,2.8,3.6,2.0)] + [[[2.6,4.8],[5.2,9.2]]],
+ 'S': [[[5,2.3],[3.4,0.9],[1.6,1.7],[1.5,3.5],[3,4.9],[4.5,6.1],[4.5,7.9],[2.8,9.1],[1,7.9]]],
+ 'T': [[[0.8,0.8],[5.2,0.8]],[[3,0.8],[3,9.2]]],
+ 'U': [[[1,0.8],[1,6.4]]] + [arc(3,6.4,2,2.7,0,180,10)] + [[[5,6.4],[5,0.8]]],
+ 'V': [[[0.8,0.8],[3,9.2],[5.2,0.8]]],
+ 'W': [[[0.6,0.8],[1.9,9.2],[3,4.4],[4.1,9.2],[5.4,0.8]]],
+ 'Y': [[[0.9,0.8],[3,5],[5.1,0.8]],[[3,5],[3,9.2]]],
+ '-': [[[1.4,5],[4.6,5]]],
+ '/': [[[1,9.2],[5,0.8]]],
+}
+def text_w(s, txt): return len(txt)*7*s
+def text(x, ytop, txt, s, c):
+    w = max(1.5, s*0.78)
+    for ch in txt.upper():
+        if ch == ' ': x += 7*s; continue
+        if ch == '.': disc(x+3*s, ytop+8.7*s, max(1.3, s*0.85), c)
+        elif ch == ',':
+            disc(x+3*s, ytop+8.7*s, max(1.3, s*0.85), c); line_seg(x+3*s, ytop+8.7*s, x+2.3*s, ytop+10.2*s, c, w*0.8)
+        elif ch == '·': disc(x+3*s, ytop+5*s, max(1.4, s*0.95), c)
+        elif ch in G:
+            for pl in G[ch]: polyline(pl, x, ytop, s, c, w)
+        x += 7*s
+
+# decorative mesh (upper-right)
+nodes = [(770,70),(880,130),(1010,90),(1110,180),(960,210),(820,235),(1060,295),(905,315),(1140,95),(745,175)]
 for i,(ax,ay) in enumerate(nodes):
     for (bx,by) in nodes[i+1:]:
-        if math.hypot(ax-bx,ay-by)<170: line(ax,ay,bx,by,DIMBLUE,0.55)
-for (ax,ay) in nodes: disc(ax,ay,3,LBLUE,0.7)
+        if math.hypot(ax-bx, ay-by) < 170: line_seg(ax, ay, bx, by, DIMBLUE, 1.2, 0.5)
+for (ax,ay) in nodes: disc(ax, ay, 3, LBLUE, 0.75)
 
-# composite REAL logo icon (downscaled) onto OG
-OGIH = 116
-ogiw = round(icw*OGIH/ich)
+# real logo (composited)
+OGIH = 96; ogiw = round(icw*OGIH/ich)
 ogicon = downscale(SRCPX, SW, SH, ix0, iy0, ix1, iy1, ogiw, OGIH)
-lx, ly = 92, 64
+lx, ly = 88, 66
 for y in range(OGIH):
     for x in range(ogiw):
-        s=(y*ogiw+x)*4; a=ogicon[s+3]/255.0
-        if a>0: setpx(lx+x, ly+y, (ogicon[s],ogicon[s+1],ogicon[s+2]), a)
+        s = (y*ogiw+x)*4; a = ogicon[s+3]/255.0
+        if a > 0: setpx(lx+x, ly+y, (ogicon[s], ogicon[s+1], ogicon[s+2]), a)
 
-# ---- 5x7 font ----
-FONT={'A':["  #  "," # # "," # # ","#   #","#####","#   #","#   #"],'B':["#### ","#   #","#   #","#### ","#   #","#   #","#### "],'C':[" ####","#    ","#    ","#    ","#    ","#    "," ####"],'D':["#### ","#   #","#   #","#   #","#   #","#   #","#### "],'E':["#####","#    ","#    ","#### ","#    ","#    ","#####"],'F':["#####","#    ","#    ","#### ","#    ","#    ","#    "],'G':[" ####","#    ","#    ","#  ##","#   #","#   #"," ####"],'H':["#   #","#   #","#   #","#####","#   #","#   #","#   #"],'I':["#####","  #  ","  #  ","  #  ","  #  ","  #  ","#####"],'J':["#####","   # ","   # ","   # ","#  # ","#  # "," ##  "],'K':["#   #","#  # ","# #  ","##   ","# #  ","#  # ","#   #"],'L':["#    ","#    ","#    ","#    ","#    ","#    ","#####"],'M':["#   #","## ##","# # #","#   #","#   #","#   #","#   #"],'N':["#   #","##  #","# # #","#  ##","#   #","#   #","#   #"],'O':[" ### ","#   #","#   #","#   #","#   #","#   #"," ### "],'P':["#### ","#   #","#   #","#### ","#    ","#    ","#    "],'Q':[" ### ","#   #","#   #","#   #","# # #","#  # "," ## #"],'R':["#### ","#   #","#   #","#### ","# #  ","#  # ","#   #"],'S':[" ####","#    ","#    "," ### ","    #","    #","#### "],'T':["#####","  #  ","  #  ","  #  ","  #  ","  #  ","  #  "],'U':["#   #","#   #","#   #","#   #","#   #","#   #"," ### "],'V':["#   #","#   #","#   #","#   #","#   #"," # # ","  #  "],'W':["#   #","#   #","#   #","#   #","# # #","## ##","#   #"],'X':["#   #","#   #"," # # ","  #  "," # # ","#   #","#   #"],'Y':["#   #","#   #"," # # ","  #  ","  #  ","  #  ","  #  "],'Z':["#####","    #","   # ","  #  "," #   ","#    ","#####"],'0':[" ### ","#   #","#  ##","# # #","##  #","#   #"," ### "],'1':["  #  "," ##  ","  #  ","  #  ","  #  ","  #  ","#####"],'2':[" ### ","#   #","    #","   # ","  #  "," #   ","#####"],'3':["#####","   # ","  #  ","   # ","    #","#   #"," ### "],'4':["   # ","  ## "," # # ","#  # ","#####","   # ","   # "],'5':["#####","#    ","#### ","    #","    #","#   #"," ### "],'6':[" ### ","#    ","#    ","#### ","#   #","#   #"," ### "],'7':["#####","    #","   # ","  #  "," #   "," #   "," #   "],'8':[" ### ","#   #","#   #"," ### ","#   #","#   #"," ### "],'9':[" ### ","#   #","#   #"," ####","    #","    #"," ### "],' ':["     ","     ","     ","     ","     ","     ","     "],'.':["     ","     ","     ","     ","     ","  ## ","  ## "],',':["     ","     ","     ","     ","  ## ","  ## "," #   "],'/':["    #","    #","   # ","  #  "," #   ","#    ","#    "],'&':[" ##  ","#  # ","#  # "," ##  ","# # #","#  # "," ## #"],'-':["     ","     ","     ","#####","     ","     ","     "],':':["     ","  ## ","  ## ","     ","  ## ","  ## ","     "],'·':["     ","     ","  #  "," ### ","  #  ","     ","     "]}
-def text_w(s,sc): return len(s)*6*sc-sc
-def text(x,y,s,sc,c):
-    for ch in s.upper():
-        g=FONT.get(ch,FONT[' '])
-        for r in range(7):
-            rb=g[r]
-            for col in range(5):
-                if rb[col]=='#':
-                    px=x+col*sc;py=y+r*sc
-                    for dy in range(sc):
-                        for dx in range(sc): setpx(px+dx,py+dy,c)
-        x+=6*sc
-
-# wordmark next to icon
+# wordmark beside logo
 wx = lx + ogiw + 26
-for s,c in [("NETRA",WHITE),("MESH",LBLUE),(" LABS",SLATE)]:
-    text(wx, 92, s, 6, c); wx += text_w(s,6)+6*6
+text(wx, 92, "NETRA", 4.0, WHITE);  wx += text_w(4.0, "NETRA")
+text(wx, 92, "MESH", 4.0, LBLUE);   wx += text_w(4.0, "MESH")
+text(wx, 92, " LABS", 4.0, SLATE)
 
-rect(92,212,74,7,EBLUE)
-text(90,240,"CYBER DEFENSE,",7,WHITE)
-text(90,312,"WOVEN INTO ONE MESH.",7,LBLUE)
-text(92,398,"INTEGRATED SECURITY OPERATIONS PLATFORM",3,SLATE)
-line(92,446,1108,446,DIMBLUE,0.8)
-text(92,474,"SIEM · SOAR · UEBA · CMDB · SOC · SANDBOX",4,LBLUE)
-dom="NETRAMESH.COM"; text(1108-text_w(dom,4),540,dom,4,WHITE)
-text(92,540,"CYBER TECHNOLOGY",4,SLATE)
+# accent bar + headline
+line_seg(94, 214, 162, 214, EBLUE, 7)
+text(90, 238, "CYBER DEFENSE,", 6.2, WHITE)
+text(90, 312, "WOVEN INTO ONE MESH.", 6.2, LBLUE)
+
+# rallying cry
+text(92, 398, "SECURITY WITHOUT GATEKEEPERS", 2.7, SLATE)
+
+# divider + chips + footer line
+line_seg(92, 452, 1108, 452, DIMBLUE, 1.4, 0.85)
+text(92, 478, "SIEM · SOAR · UEBA · CMDB · SOC · NIDS", 3.0, LBLUE)
+text(92, 544, "OPEN SECOPS INITIATIVE", 2.5, SLATE)
+dom = "NETRAMESH.COM"
+text(1108-text_w(3.4, dom), 540, dom, 3.4, WHITE)
 
 write_png(IMGDIR + "/og-image.png", W, H, buf, rgb_only=True)
 print("og-image.png 1200x630")
