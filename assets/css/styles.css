@@ -691,6 +691,31 @@ ul { list-style: none; }
 .card[data-goto]:focus-within::after { opacity: 1; transform: none; }
 html[lang="id"] .card[data-goto]::after { content: "Lihat di konsol →"; }
 
+/* Threat Hunting query bar */
+.huntbar { display: flex; align-items: center; gap: 10px; background: #0a1120; border: 1px solid var(--border-strong); border-radius: 10px; padding: 11px 14px; margin-bottom: 14px; }
+.huntbar__prompt { font-family: var(--mono); color: var(--electric-blue); font-weight: 700; font-size: .82rem; flex-shrink: 0; }
+.huntbar code { flex: 1; font-family: var(--mono); font-size: .76rem; color: var(--light-gray); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.huntbar__run { font-family: var(--mono); font-size: .66rem; font-weight: 700; letter-spacing: 1px; color: #fff; background: linear-gradient(135deg, var(--electric-blue), var(--cyber-blue)); padding: 5px 12px; border-radius: 6px; flex-shrink: 0; }
+
+/* Adversary Sim — ATT&CK coverage heatmap */
+.heatmap { display: grid; grid-template-columns: repeat(8, 1fr); gap: 5px; margin-bottom: 12px; }
+.hcell { aspect-ratio: 1; border-radius: 3px; background: rgba(255,255,255,.06); }
+.hcell--ok { background: #34d399; } .hcell--mid { background: #f5b041; } .hcell--bad { background: #ff6b6b; }
+.heatmap__legend { display: flex; gap: 16px; font-size: .72rem; color: var(--slate); }
+.heatmap__legend span { display: inline-flex; align-items: center; gap: 6px; }
+.heatmap__legend i { width: 11px; height: 11px; border-radius: 3px; display: inline-block; }
+.heatmap__legend .hm--ok { background: #34d399; } .heatmap__legend .hm--mid { background: #f5b041; } .heatmap__legend .hm--bad { background: #ff6b6b; }
+
+/* AI Security Engineering — copilot */
+.ai-msg { font-size: .84rem; line-height: 1.5; border-radius: 10px; padding: 9px 13px; margin-bottom: 8px; max-width: 92%; }
+.ai-msg--user { background: var(--surface-2); color: var(--text); margin-left: auto; }
+.ai-msg--bot { background: rgba(30,136,229,.12); border: 1px solid var(--border-strong); color: var(--text); }
+.codeblock { background: #0a1120; border: 1px solid var(--border); border-radius: 9px; padding: 12px 14px; overflow-x: auto; margin: 0 0 10px; }
+.codeblock code { font-family: var(--mono); font-size: .76rem; color: #9fd0ff; white-space: pre; line-height: 1.65; }
+.ai-actions { display: flex; gap: 8px; }
+.ai-btn { font-size: .76rem; font-weight: 600; padding: 6px 15px; border-radius: 999px; background: linear-gradient(135deg, var(--electric-blue), var(--cyber-blue)); color: #fff; }
+.ai-btn--ghost { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
+
 .appwin__disclaimer { text-align: center; color: var(--slate); font-size: .8rem; margin-top: 16px; font-family: var(--mono); }
 
 /* ============================================================

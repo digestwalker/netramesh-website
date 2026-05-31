@@ -151,7 +151,7 @@
     <section class="stats" aria-label="Key metrics">
       <div class="container stats__grid">
         <div class="stat reveal">
-          <span class="stat__num" data-count="9">0</span><span class="stat__plus">+</span>
+          <span class="stat__num" data-count="13">0</span><span class="stat__plus">+</span>
           <p class="stat__label" data-en="Integrated Modules" data-id="Modul Terintegrasi">Integrated Modules</p>
         </div>
         <div class="stat reveal">
@@ -296,6 +296,42 @@
             <p class="card__text" data-en="Continuously discover, prioritize, and remediate vulnerabilities by real-world risk — not just CVSS noise." data-id="Temukan, prioritaskan, dan remediasi kerentanan secara berkelanjutan berdasarkan risiko nyata — bukan sekadar noise CVSS.">Continuously discover, prioritize, and remediate vulnerabilities by real-world risk — not just CVSS noise.</p>
           <p class="card__why" data-en="Why it matters: you can't patch everything — prioritize by real exploitability, not endless CVSS noise." data-id="Kenapa penting: Anda tak bisa menambal semuanya — prioritaskan berdasarkan eksploitabilitas nyata, bukan noise CVSS tanpa akhir.">Why it matters: you can't patch everything — prioritize by real exploitability, not endless CVSS noise.</p>
           </article>
+          <!-- NIDS -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="nids">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4.5"/><path d="M12 12l7-5"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><circle cx="17.5" cy="8" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="card__title">NIDS</h3>
+            <p class="card__text" data-en="Network intrusion detection that inspects traffic in real time — catching exploits, lateral movement, and C2 the moment they cross the wire." data-id="Network intrusion detection yang menginspeksi lalu lintas secara real-time — menangkap eksploit, pergerakan lateral, dan C2 begitu melintas di jaringan.">Network intrusion detection that inspects traffic in real time — catching exploits, lateral movement, and C2 the moment they cross the wire.</p>
+            <p class="card__why" data-en="Why it matters: endpoints can be blind or bypassed — the network never lies about what's actually moving." data-id="Kenapa penting: endpoint bisa buta atau dilewati — jaringan tak pernah bohong soal apa yang sebenarnya bergerak.">Why it matters: endpoints can be blind or bypassed — the network never lies about what's actually moving.</p>
+          </article>
+          <!-- Threat Hunting Workbench -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="hunt">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M11 7.5v7M7.5 11h7"/><path d="M16.5 16.5L21 21"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Threat Hunting Workbench" data-id="Threat Hunting Workbench">Threat Hunting Workbench</h3>
+            <p class="card__text" data-en="A purpose-built workspace to hunt proactively — query unified data, test hypotheses, and pivot across signals to find what alerts miss." data-id="Ruang kerja khusus untuk berburu ancaman secara proaktif — query data terpadu, uji hipotesis, dan pivot antar-sinyal untuk menemukan yang terlewat oleh alert.">A purpose-built workspace to hunt proactively — query unified data, test hypotheses, and pivot across signals to find what alerts miss.</p>
+            <p class="card__why" data-en="Why it matters: the most dangerous threats don't trigger alerts — you have to go looking for them." data-id="Kenapa penting: ancaman paling berbahaya tak memicu alert — Anda harus aktif mencarinya.">Why it matters: the most dangerous threats don't trigger alerts — you have to go looking for them.</p>
+          </article>
+          <!-- Security Adversary Simulation -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="bas">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Adversary Simulation" data-id="Adversary Simulation">Adversary Simulation</h3>
+            <p class="card__text" data-en="Safely emulate real-world attacks and TTPs to validate defenses, measure detection coverage, and expose gaps before adversaries do." data-id="Emulasikan serangan &amp; TTP dunia nyata secara aman untuk memvalidasi pertahanan, mengukur cakupan deteksi, dan menemukan celah sebelum penyerang.">Safely emulate real-world attacks and TTPs to validate defenses, measure detection coverage, and expose gaps before adversaries do.</p>
+            <p class="card__why" data-en="Why it matters: untested defenses are just assumptions — simulation turns &quot;we should be covered&quot; into proof." data-id="Kenapa penting: pertahanan yang tak diuji hanyalah asumsi — simulasi mengubah &quot;harusnya aman&quot; menjadi bukti.">Why it matters: untested defenses are just assumptions — simulation turns &quot;we should be covered&quot; into proof.</p>
+          </article>
+          <!-- AI-Powered Security Engineering -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="aisec">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 3v3M15 3v3M9 18v3M15 18v3M3 9h3M3 15h3M18 9h3M18 15h3"/><path d="M12 9l.9 2.1 2.1.9-2.1.9L12 15l-.9-2.1L9 12l2.1-.9z" fill="currentColor" stroke="none"/></svg>
+            </span>
+            <h3 class="card__title" data-en="AI Security Engineering" data-id="AI Security Engineering">AI Security Engineering</h3>
+            <p class="card__text" data-en="An AI copilot for your SOC — generate detections-as-code, auto-tune noisy rules, summarize incidents, and turn analyst intent into working logic." data-id="Copilot AI untuk SOC Anda — hasilkan detection-as-code, auto-tuning rule berisik, ringkas insiden, dan ubah maksud analis menjadi logika yang berfungsi.">An AI copilot for your SOC — generate detections-as-code, auto-tune noisy rules, summarize incidents, and turn analyst intent into working logic.</p>
+            <p class="card__why" data-en="Why it matters: talent is scarce and time is short — AI multiplies every analyst instead of replacing them." data-id="Kenapa penting: talenta langka dan waktu sempit — AI melipatgandakan setiap analis, bukan menggantikannya.">Why it matters: talent is scarce and time is short — AI multiplies every analyst instead of replacing them.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -339,6 +375,10 @@
                 <button class="appwin__tab" data-view="soar" role="tab" aria-selected="false" type="button">SOAR Playbook</button>
                 <button class="appwin__tab" data-view="ueba" role="tab" aria-selected="false" type="button">UEBA</button>
                 <button class="appwin__tab" data-view="sandbox" role="tab" aria-selected="false" type="button">Sandboxing</button>
+                <button class="appwin__tab" data-view="nids" role="tab" aria-selected="false" type="button">NIDS</button>
+                <button class="appwin__tab" data-view="hunt" role="tab" aria-selected="false" type="button">Threat Hunting</button>
+                <button class="appwin__tab" data-view="bas" role="tab" aria-selected="false" type="button">Adversary Sim</button>
+                <button class="appwin__tab" data-view="aisec" role="tab" aria-selected="false" type="button">AI Engineering</button>
               </div>
 
               <!-- VIEW: SOC OVERVIEW -->
@@ -702,6 +742,140 @@
                 </div>
               </div>
 
+              <!-- VIEW: NIDS -->
+              <div class="dashview" data-view="nids" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Throughput</span><span class="kpi__val">8.4<small>Gbps</small></span><span class="kpi__delta kpi__delta--ok">● inspecting</span></div>
+                  <div class="kpi"><span class="kpi__label">Active Sessions</span><span class="kpi__val">142k</span><span class="kpi__delta kpi__delta--ok">live</span></div>
+                  <div class="kpi"><span class="kpi__label">Signatures</span><span class="kpi__val">28,610</span><span class="kpi__delta kpi__delta--ok">updated</span></div>
+                  <div class="kpi"><span class="kpi__label">Anomalies (1h)</span><span class="kpi__val">17</span><span class="kpi__delta kpi__delta--up">▲ 5</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--chart">
+                    <div class="panel__head"><h4>Traffic by Protocol</h4><span class="panel__tag">live</span></div>
+                    <div class="bars">
+                      <div class="bar" data-h="86%"><span>HTTPS</span></div>
+                      <div class="bar" data-h="48%"><span>DNS</span></div>
+                      <div class="bar" data-h="32%"><span>SMB</span></div>
+                      <div class="bar" data-h="22%"><span>RDP</span></div>
+                      <div class="bar" data-h="40%"><span>SSH</span></div>
+                      <div class="bar" data-h="16%"><span>other</span></div>
+                      <div class="bar" data-h="60%"><span>HTTP</span></div>
+                    </div>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Network Detections</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>live</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">exploit · CVE-2026-3148 → edge-gw</span><span class="badge badge--crit">exploit</span></li>
+                      <li><span class="sev sev--crit"></span><span class="feed__name">beacon · DNS → c2-beacon.example</span><span class="badge badge--crit">C2</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">lateral · SMB 445 dc01 → fs04</span><span class="badge badge--high">lateral</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">recon · port scan from 10.4.12.88</span><span class="badge badge--high">scan</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">exfil · 1.2GB out → 185.x.x.x</span><span class="badge badge--high">exfil</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: THREAT HUNTING WORKBENCH -->
+              <div class="dashview" data-view="hunt" role="tabpanel" hidden>
+                <div class="huntbar">
+                  <span class="huntbar__prompt">hunt&gt;</span>
+                  <code>process="powershell" AND net.bytes_out &gt; 1e6 | rare(dest.asn) | join ueba.score &gt; 0.8</code>
+                  <span class="huntbar__run">RUN</span>
+                </div>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Active Hunts</span><span class="kpi__val">6</span><span class="kpi__delta kpi__delta--ok">running</span></div>
+                  <div class="kpi"><span class="kpi__label">Hypotheses</span><span class="kpi__val">23</span><span class="kpi__delta kpi__delta--ok">tracked</span></div>
+                  <div class="kpi"><span class="kpi__label">Findings</span><span class="kpi__val">4</span><span class="kpi__delta kpi__delta--up">▲ 2</span></div>
+                  <div class="kpi"><span class="kpi__label">Data Scanned</span><span class="kpi__val">3.1<small>TB</small></span><span class="kpi__delta kpi__delta--ok">90d</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Hunt Results</h4><span class="panel__tag">12 hits</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">svc-bot · enc powershell + 1.4GB out</span><span class="badge badge--crit">promote</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">fs04 · rare ASN beacon (4h)</span><span class="badge badge--high">pivot</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">admin3 · off-hours kerberoast</span><span class="badge badge--high">review</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">12 hosts · benign sched task</span><span class="badge">dismiss</span></li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <div class="panel__head"><h4>Pivots &amp; IOCs</h4></div>
+                    <ul class="tags">
+                      <li>dest.asn:rare</li><li>powershell -enc</li><li>185.x.x.x</li><li>c2-beacon</li><li>kerberoast</li><li>svc-bot@corp</li>
+                    </ul>
+                    <div class="panel__head panel__head--mt"><h4>Saved Hunts</h4></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="feed__name">Impossible travel — privileged</span><span class="badge badge--ok">scheduled</span></li>
+                      <li><span class="feed__name">LOLBin execution chains</span><span class="badge badge--ok">scheduled</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: ADVERSARY SIMULATION (BAS) -->
+              <div class="dashview" data-view="bas" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Scenarios Run</span><span class="kpi__val">48</span><span class="kpi__delta kpi__delta--ok">this month</span></div>
+                  <div class="kpi"><span class="kpi__label">Techniques Tested</span><span class="kpi__val">214</span><span class="kpi__delta kpi__delta--ok">ATT&amp;CK</span></div>
+                  <div class="kpi"><span class="kpi__label">Detected</span><span class="kpi__val">78<small>%</small></span><span class="kpi__delta kpi__delta--down">▲ 11%</span></div>
+                  <div class="kpi"><span class="kpi__label">Coverage Gaps</span><span class="kpi__val">12</span><span class="kpi__delta kpi__delta--up">action</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel">
+                    <div class="panel__head"><h4>ATT&amp;CK Coverage</h4><span class="panel__tag">detect rate</span></div>
+                    <div class="heatmap">
+                      <span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--mid"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--bad"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span>
+                      <span class="hcell hcell--ok"></span><span class="hcell hcell--mid"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--bad"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--mid"></span>
+                      <span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--bad"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--mid"></span><span class="hcell hcell--ok"></span><span class="hcell hcell--ok"></span>
+                    </div>
+                    <div class="heatmap__legend"><span><i class="hm--ok"></i>detected</span><span><i class="hm--mid"></i>partial</span><span><i class="hm--bad"></i>missed</span></div>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Latest Simulations</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>running</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="feed__time">T1059</span><span class="feed__name">PowerShell execution</span><span class="badge badge--ok">detected</span></li>
+                      <li><span class="feed__time">T1021</span><span class="feed__name">RDP lateral movement</span><span class="badge badge--ok">detected</span></li>
+                      <li><span class="feed__time">T1048</span><span class="feed__name">Exfil over DNS</span><span class="badge badge--crit">missed</span></li>
+                      <li><span class="feed__time">T1547</span><span class="feed__name">Registry persistence</span><span class="badge badge--ok">detected</span></li>
+                      <li><span class="feed__time">T1003</span><span class="feed__name">LSASS credential dump</span><span class="badge badge--high">partial</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <!-- VIEW: AI-POWERED SECURITY ENGINEERING -->
+              <div class="dashview" data-view="aisec" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Detections Generated</span><span class="kpi__val">320</span><span class="kpi__delta kpi__delta--ok">as-code</span></div>
+                  <div class="kpi"><span class="kpi__label">Rules Auto-Tuned</span><span class="kpi__val">1,204</span><span class="kpi__delta kpi__delta--ok">live</span></div>
+                  <div class="kpi"><span class="kpi__label">False Positives</span><span class="kpi__val">-63<small>%</small></span><span class="kpi__delta kpi__delta--down">▼ noise</span></div>
+                  <div class="kpi"><span class="kpi__label">Triage Assist</span><span class="kpi__val">24/7</span><span class="kpi__delta kpi__delta--ok">copilot</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel">
+                    <div class="panel__head"><h4>Detection Copilot</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>online</span></div>
+                    <div class="ai-msg ai-msg--user">"Detect impossible travel for privileged accounts in the last 24h."</div>
+                    <div class="ai-msg ai-msg--bot">Generated a detection-as-code rule:</div>
+                    <pre class="codeblock"><code>rule "priv-impossible-travel":
+  when login.role in ["admin","svc"]
+   and geo.distance(prev, curr) &gt; 700km
+   and time.delta &lt; 1h
+  then risk += 0.6 ; open_case()</code></pre>
+                    <div class="ai-actions"><span class="ai-btn">Apply</span><span class="ai-btn ai-btn--ghost">Simulate</span></div>
+                  </div>
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>AI Activity</h4><span class="panel__tag">last 1h</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--low"></span><span class="feed__name">auto-tuned "brute-force" → -41% FP</span><span class="badge badge--ok">tuned</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">summarized INC-2041 in 3s</span><span class="badge badge--ok">summary</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">suggested enrichment: ASN + geo</span><span class="badge badge--high">suggest</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">generated 6 Sigma rules</span><span class="badge badge--ok">as-code</span></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -853,7 +1027,7 @@
               <li data-en="Open, interoperable, no lock-in" data-id="Terbuka, interoperabel, tanpa lock-in">Open, interoperable, no lock-in</li>
               <li data-en="Capability on par with the &quot;leaders&quot;" data-id="Kapabilitas setara para &quot;leader&quot;">Capability on par with the &quot;leaders&quot;</li>
               <li data-en="Runs on infrastructure you control" data-id="Berjalan di infrastruktur yang Anda kendalikan">Runs on infrastructure you control</li>
-              <li data-en="One integrated suite — all nine modules" data-id="Satu suite terintegrasi — sembilan modul">One integrated suite — all nine modules</li>
+              <li data-en="One integrated suite — all thirteen modules" data-id="Satu suite terintegrasi — tiga belas modul">One integrated suite — all thirteen modules</li>
             </ul>
           </div>
         </div>
