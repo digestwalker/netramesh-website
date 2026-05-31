@@ -1,0 +1,6 @@
+# NetraMesh Labs — security contact (RFC 9116)
+Contact: mailto:security@netramesh.com
+Expires: 2027-05-31T23:59:59.000Z
+Preferred-Languages: en, id
+Canonical: https://netramesh.com/.well-known/security.txt
+Policy: https://netramesh.com/privacy.html

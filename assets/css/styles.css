@@ -295,7 +295,7 @@ ul { list-style: none; }
 /* ---------- 3D tilt on product cards ---------- */
 .grid--products { perspective: 1200px; }
 .card { transform-style: preserve-3d; will-change: transform; }
-.card__icon, .card__title, .card__text { transform: translateZ(28px); }
+.card__icon, .card__title, .card__text, .card__why { transform: translateZ(28px); }
 
 /* ============================================================
    STATS
@@ -318,6 +318,7 @@ ul { list-style: none; }
 .section__eyebrow::before { content: "// "; opacity: .6; }
 .section__title { font-size: clamp(1.8rem, 4vw, 2.7rem); line-height: 1.15; letter-spacing: -.8px; color: var(--heading); font-weight: 800; margin-bottom: 16px; }
 .section__sub { color: var(--text-dim); font-size: 1.05rem; }
+.bridge { max-width: 860px; margin: 44px auto 0; text-align: center; font-size: clamp(1.08rem, 2.2vw, 1.4rem); line-height: 1.55; color: var(--heading); font-weight: 600; border-top: 1px solid var(--border); padding-top: 38px; }
 
 .grid { display: grid; gap: 22px; }
 
@@ -346,6 +347,7 @@ ul { list-style: none; }
 .card__icon svg { width: 26px; height: 26px; fill: none; stroke: var(--electric-blue); stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .card__title { color: var(--heading); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
 .card__text { color: var(--text-dim); font-size: .95rem; }
+.card__why { margin-top: 14px; padding-top: 13px; border-top: 1px dashed var(--border); font-size: .82rem; line-height: 1.55; color: var(--slate); }
 
 /* ---------- Solutions ---------- */
 .grid--solutions { grid-template-columns: repeat(2, 1fr); }
@@ -402,6 +404,9 @@ ul { list-style: none; }
 .value:hover { transform: translateY(-4px); border-left-color: var(--electric-blue); }
 .value__title { color: var(--heading); font-size: 1.18rem; font-weight: 700; margin-bottom: 10px; }
 .value p { color: var(--text-dim); font-size: .96rem; }
+.value__link { display: inline-block; margin-top: 12px; color: var(--electric-blue); font-size: .86rem; font-weight: 600; }
+.value__link:hover { color: #67c0ff; }
+.trust__note { max-width: 820px; margin: 38px auto 0; text-align: center; font-size: .9rem; line-height: 1.6; color: var(--slate); border-top: 1px solid var(--border); padding-top: 30px; }
 
 /* Commitment / manifesto */
 .manifesto {
@@ -419,6 +424,25 @@ ul { list-style: none; }
 .mp-ico { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; flex-shrink: 0; border-radius: 50%; background: rgba(30,136,229,0.18); border: 1px solid var(--border-strong); color: var(--electric-blue); font-size: .8rem; font-weight: 700; margin-top: 2px; }
 .manifesto__points strong { display: block; color: var(--heading); font-size: 1rem; margin-bottom: 3px; }
 .manifesto__points span { color: var(--text-dim); font-size: .9rem; }
+
+/* Cost/parity comparison + audience */
+.compare__title { text-align: center; color: var(--heading); font-size: clamp(1.3rem, 2.6vw, 1.85rem); font-weight: 800; letter-spacing: -.4px; margin: 52px 0 6px; }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 24px; }
+.compare__col { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px 26px; }
+.compare__col--us { border-color: var(--border-strong); box-shadow: 0 0 0 1px var(--border-strong), 0 22px 50px -28px var(--glow); background: linear-gradient(160deg, rgba(30,136,229,0.10), transparent 70%); }
+.compare__col h4 { font-size: 1.06rem; font-weight: 700; color: var(--heading); margin-bottom: 16px; }
+.compare__col--them h4 { color: var(--slate); }
+.compare__col ul { display: grid; gap: 12px; }
+.compare__col li { display: flex; gap: 11px; font-size: .91rem; line-height: 1.45; color: var(--text-dim); }
+.compare__col li::before { flex-shrink: 0; font-weight: 800; }
+.compare__col--them li { color: var(--slate); }
+.compare__col--them li::before { content: "\2715"; color: #ef5350; }
+.compare__col--us li::before { content: "\2713"; color: #4ade80; }
+.compare__badge { position: absolute; top: -11px; right: 20px; background: linear-gradient(135deg, var(--electric-blue), var(--cyber-blue)); color: #fff; font-family: var(--mono); font-size: .64rem; font-weight: 700; letter-spacing: 1px; padding: 4px 11px; border-radius: 999px; box-shadow: 0 6px 16px -6px var(--glow); }
+.audience { margin-top: 32px; text-align: center; }
+.audience h4 { color: var(--heading); font-size: 1.05rem; font-weight: 700; margin-bottom: 16px; }
+.audience .tags { justify-content: center; }
+.audience__note { color: var(--text-dim); font-size: .92rem; max-width: 700px; margin: 18px auto 0; }
 
 /* ============================================================
    CONTACT
@@ -670,6 +694,20 @@ html[lang="id"] .card[data-goto]::after { content: "Lihat di konsol →"; }
 .appwin__disclaimer { text-align: center; color: var(--slate); font-size: .8rem; margin-top: 16px; font-family: var(--mono); }
 
 /* ============================================================
+   LEGAL PAGE (privacy.html)
+   ============================================================ */
+.legal { padding-top: 120px; }
+.legal .container { max-width: 820px; }
+.legal__updated { color: var(--slate); font-family: var(--mono); font-size: .85rem; margin-bottom: 28px; }
+.legal h2 { color: var(--heading); font-size: 1.2rem; font-weight: 700; margin: 30px 0 10px; }
+.legal p { color: var(--text-dim); margin-bottom: 14px; line-height: 1.7; }
+.legal a { color: var(--electric-blue); }
+.legal a:hover { color: #67c0ff; }
+.legal code { font-family: var(--mono); font-size: .88em; background: var(--surface); border: 1px solid var(--border); border-radius: 5px; padding: 1px 6px; color: var(--light-gray); }
+.legal__hr { border: none; border-top: 1px solid var(--border); margin: 40px 0 8px; }
+.legal__back { margin-top: 36px; }
+
+/* ============================================================
    SCROLL REVEAL
    ============================================================ */
 .reveal { opacity: 0; transform: translateY(26px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
@@ -714,6 +752,7 @@ html[lang="id"] .card[data-goto]::after { content: "Lihat di konsol →"; }
   .stat:nth-child(2)::after { display: none; }
   .grid--solutions, .grid--values, .contact__inner { grid-template-columns: 1fr; }
   .manifesto__points { grid-template-columns: 1fr; gap: 16px; }
+  .compare { grid-template-columns: 1fr; }
   .kpis { grid-template-columns: repeat(2, 1fr); }
   .appwin__main { padding: 14px 12px 16px; }
   .appwin__tab { padding: 6px 12px; font-size: .74rem; }

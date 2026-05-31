@@ -3,11 +3,13 @@
   # Uses $HOME so it resolves to the correct home dir regardless of /home vs /home2.
 deployment:
   tasks:
-    - /bin/mkdir -p "$HOME/public_html/assets/css" "$HOME/public_html/assets/js" "$HOME/public_html/assets/img"
+    - /bin/mkdir -p "$HOME/public_html/assets/css" "$HOME/public_html/assets/js" "$HOME/public_html/assets/img" "$HOME/public_html/.well-known"
     - /bin/cp -f index.html "$HOME/public_html/"
+    - /bin/cp -f privacy.html "$HOME/public_html/"
     - /bin/cp -f .htaccess "$HOME/public_html/"
     - /bin/cp -f robots.txt "$HOME/public_html/"
     - /bin/cp -f sitemap.xml "$HOME/public_html/"
+    - /bin/cp -f .well-known/security.txt "$HOME/public_html/.well-known/"
     - /bin/cp -f assets/css/styles.css "$HOME/public_html/assets/css/"
     - /bin/cp -f assets/js/main.js "$HOME/public_html/assets/js/"
     - /bin/cp -f assets/img/logo-icon.png "$HOME/public_html/assets/img/"
