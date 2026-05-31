@@ -151,7 +151,7 @@
     <section class="stats" aria-label="Key metrics">
       <div class="container stats__grid">
         <div class="stat reveal">
-          <span class="stat__num" data-count="13">0</span><span class="stat__plus">+</span>
+          <span class="stat__num" data-count="14">0</span><span class="stat__plus">+</span>
           <p class="stat__label" data-en="Integrated Modules" data-id="Modul Terintegrasi">Integrated Modules</p>
         </div>
         <div class="stat reveal">
@@ -332,6 +332,15 @@
             <p class="card__text" data-en="An AI copilot for your SOC — generate detections-as-code, auto-tune noisy rules, summarize incidents, and turn analyst intent into working logic." data-id="Copilot AI untuk SOC Anda — hasilkan detection-as-code, auto-tuning rule berisik, ringkas insiden, dan ubah maksud analis menjadi logika yang berfungsi.">An AI copilot for your SOC — generate detections-as-code, auto-tune noisy rules, summarize incidents, and turn analyst intent into working logic.</p>
             <p class="card__why" data-en="Why it matters: talent is scarce and time is short — AI multiplies every analyst instead of replacing them." data-id="Kenapa penting: talenta langka dan waktu sempit — AI melipatgandakan setiap analis, bukan menggantikannya.">Why it matters: talent is scarce and time is short — AI multiplies every analyst instead of replacing them.</p>
           </article>
+          <!-- Playbook / Runbook Library -->
+          <article class="card reveal" tabindex="0" role="button" data-goto="playbook">
+            <span class="card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h6v16H6a2 2 0 0 0-2 2z"/><path d="M20 5a2 2 0 0 0-2-2h-6v16h6a2 2 0 0 1 2 2z"/><path d="M7 8h3M7 11h2M14 8h3M14 11h2"/></svg>
+            </span>
+            <h3 class="card__title" data-en="Playbook / Runbook Library" data-id="Pustaka Playbook / Runbook">Playbook / Runbook Library</h3>
+            <p class="card__text" data-en="A curated, version-controlled library of incident playbooks and operational runbooks — codified best practice your team can launch, adapt, and reuse instantly." data-id="Pustaka playbook insiden dan runbook operasional yang terkurasi dan ter-version — praktik terbaik terkodifikasi yang siap diluncurkan, disesuaikan, dan dipakai ulang seketika.">A curated, version-controlled library of incident playbooks and operational runbooks — codified best practice your team can launch, adapt, and reuse instantly.</p>
+            <p class="card__why" data-en="Why it matters: response shouldn't depend on who's on shift — codified playbooks make every responder act like your best one." data-id="Kenapa penting: respons tak seharusnya bergantung siapa yang sedang jaga — playbook terkodifikasi membuat setiap responder bertindak seperti yang terbaik.">Why it matters: response shouldn't depend on who's on shift — codified playbooks make every responder act like your best one.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -379,6 +388,7 @@
                 <button class="appwin__tab" data-view="hunt" role="tab" aria-selected="false" type="button">Threat Hunting</button>
                 <button class="appwin__tab" data-view="bas" role="tab" aria-selected="false" type="button">Adversary Sim</button>
                 <button class="appwin__tab" data-view="aisec" role="tab" aria-selected="false" type="button">AI Engineering</button>
+                <button class="appwin__tab" data-view="playbook" role="tab" aria-selected="false" type="button">Playbook Library</button>
               </div>
 
               <!-- VIEW: SOC OVERVIEW -->
@@ -876,6 +886,40 @@
                 </div>
               </div>
 
+              <!-- VIEW: PLAYBOOK / RUNBOOK LIBRARY -->
+              <div class="dashview" data-view="playbook" role="tabpanel" hidden>
+                <div class="kpis">
+                  <div class="kpi"><span class="kpi__label">Playbooks</span><span class="kpi__val">62</span><span class="kpi__delta kpi__delta--ok">curated</span></div>
+                  <div class="kpi"><span class="kpi__label">Runbooks</span><span class="kpi__val">140</span><span class="kpi__delta kpi__delta--ok">version-controlled</span></div>
+                  <div class="kpi"><span class="kpi__label">Steps Automated</span><span class="kpi__val">74<small>%</small></span><span class="kpi__delta kpi__delta--down">▲ 9%</span></div>
+                  <div class="kpi"><span class="kpi__label">MITRE Mapped</span><span class="kpi__val">100<small>%</small></span><span class="kpi__delta kpi__delta--ok">aligned</span></div>
+                </div>
+                <div class="dashgrid dashgrid--siem">
+                  <div class="panel panel--feed">
+                    <div class="panel__head"><h4>Library</h4><span class="panel__tag">62 playbooks</span></div>
+                    <ul class="feed feed--mono">
+                      <li><span class="sev sev--crit"></span><span class="feed__name">Ransomware Containment</span><span class="badge badge--ok">auto</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">Phishing Response</span><span class="badge badge--ok">auto</span></li>
+                      <li><span class="sev sev--high"></span><span class="feed__name">Compromised Account</span><span class="badge badge--high">guided</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">Data Exfiltration</span><span class="badge badge--ok">auto</span></li>
+                      <li><span class="sev sev--med"></span><span class="feed__name">Insider Threat</span><span class="badge badge--high">guided</span></li>
+                      <li><span class="sev sev--low"></span><span class="feed__name">Malware Eradication</span><span class="badge badge--ok">auto</span></li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <div class="panel__head"><h4>Runbook · Phishing Response</h4><span class="panel__tag panel__tag--live"><span class="console__pulse"></span>v3.2</span></div>
+                    <ol class="steps">
+                      <li><span class="steps__n">1</span><div><b>Detect</b><span>user report / SEG alert</span></div><span class="badge badge--ok">auto</span></li>
+                      <li><span class="steps__n">2</span><div><b>Detonate</b><span>URL &amp; attachment in sandbox</span></div><span class="badge badge--ok">auto</span></li>
+                      <li><span class="steps__n">3</span><div><b>Scope</b><span>find all recipients</span></div><span class="badge badge--ok">auto</span></li>
+                      <li><span class="steps__n">4</span><div><b>Contain</b><span>quarantine mail, block sender</span></div><span class="badge badge--ok">auto</span></li>
+                      <li><span class="steps__n">5</span><div><b>Remediate</b><span>reset affected credentials</span></div><span class="badge badge--high">guided</span></li>
+                      <li><span class="steps__n">6</span><div><b>Close</b><span>document &amp; notify</span></div><span class="badge badge--ok">auto</span></li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
@@ -1027,7 +1071,7 @@
               <li data-en="Open, interoperable, no lock-in" data-id="Terbuka, interoperabel, tanpa lock-in">Open, interoperable, no lock-in</li>
               <li data-en="Capability on par with the &quot;leaders&quot;" data-id="Kapabilitas setara para &quot;leader&quot;">Capability on par with the &quot;leaders&quot;</li>
               <li data-en="Runs on infrastructure you control" data-id="Berjalan di infrastruktur yang Anda kendalikan">Runs on infrastructure you control</li>
-              <li data-en="One integrated suite — all thirteen modules" data-id="Satu suite terintegrasi — tiga belas modul">One integrated suite — all thirteen modules</li>
+              <li data-en="One integrated suite — all fourteen modules" data-id="Satu suite terintegrasi — empat belas modul">One integrated suite — all fourteen modules</li>
             </ul>
           </div>
         </div>

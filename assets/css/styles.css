@@ -716,6 +716,15 @@ html[lang="id"] .card[data-goto]::after { content: "Lihat di konsol →"; }
 .ai-btn { font-size: .76rem; font-weight: 600; padding: 6px 15px; border-radius: 999px; background: linear-gradient(135deg, var(--electric-blue), var(--cyber-blue)); color: #fff; }
 .ai-btn--ghost { background: transparent; border: 1px solid var(--border-strong); color: var(--text); }
 
+/* Playbook / Runbook steps */
+.steps { display: grid; gap: 1px; }
+.steps li { display: flex; align-items: flex-start; gap: 11px; padding: 9px 4px; border-bottom: 1px solid rgba(255,255,255,.04); }
+.steps__n { flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%; background: rgba(30,136,229,.16); border: 1px solid var(--border-strong); color: var(--electric-blue); font-family: var(--mono); font-size: .72rem; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; }
+.steps li > div { flex: 1; min-width: 0; }
+.steps li b { display: block; color: var(--text); font-size: .84rem; font-weight: 600; }
+.steps li > div span { color: var(--slate); font-size: .74rem; }
+.steps .badge { flex-shrink: 0; margin-top: 2px; }
+
 .appwin__disclaimer { text-align: center; color: var(--slate); font-size: .8rem; margin-top: 16px; font-family: var(--mono); }
 
 /* ============================================================
