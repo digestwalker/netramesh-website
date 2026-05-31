@@ -31,6 +31,12 @@
   Header unset Server
 </IfModule>
 
+# Correct MIME types (cPanel/Apache may not know .webmanifest)
+<IfModule mod_mime.c>
+  AddType application/manifest+json .webmanifest
+  AddType image/svg+xml .svg
+</IfModule>
+
 # Cache static assets aggressively
 <IfModule mod_expires.c>
   ExpiresActive On
