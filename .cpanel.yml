@@ -14,3 +14,4 @@
       - /bin/cp -f assets/img/favicon.png "$HOME/public_html/assets/img/"
       - /bin/cp -f assets/img/apple-touch-icon.png "$HOME/public_html/assets/img/"
       - /bin/cp -f assets/img/og-image.png "$HOME/public_html/assets/img/"
+
