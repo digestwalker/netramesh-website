@@ -1,17 +1,16 @@
 ---
  # cPanel Git Version Control deployment.
   # Uses $HOME so it resolves to the correct home dir regardless of /home vs /home2.
-  deployment:
-    tasks:
-      - /bin/mkdir -p "$HOME/public_html/assets/css" "$HOME/public_html/assets/js" "$HOME/public_html/assets/img"
-      - /bin/cp -f index.html "$HOME/public_html/"
-      - /bin/cp -f .htaccess "$HOME/public_html/"
-      - /bin/cp -f robots.txt "$HOME/public_html/"
-      - /bin/cp -f sitemap.xml "$HOME/public_html/"
-      - /bin/cp -f assets/css/styles.css "$HOME/public_html/assets/css/"
-      - /bin/cp -f assets/js/main.js "$HOME/public_html/assets/js/"
-      - /bin/cp -f assets/img/logo-icon.png "$HOME/public_html/assets/img/"
-      - /bin/cp -f assets/img/favicon.png "$HOME/public_html/assets/img/"
-      - /bin/cp -f assets/img/apple-touch-icon.png "$HOME/public_html/assets/img/"
-      - /bin/cp -f assets/img/og-image.png "$HOME/public_html/assets/img/"
-
+deployment:
+  tasks:
+    - /bin/mkdir -p "$HOME/public_html/assets/css" "$HOME/public_html/assets/js" "$HOME/public_html/assets/img"
+    - /bin/cp -f index.html "$HOME/public_html/"
+    - /bin/cp -f .htaccess "$HOME/public_html/"
+    - /bin/cp -f robots.txt "$HOME/public_html/"
+    - /bin/cp -f sitemap.xml "$HOME/public_html/"
+    - /bin/cp -f assets/css/styles.css "$HOME/public_html/assets/css/"
+    - /bin/cp -f assets/js/main.js "$HOME/public_html/assets/js/"
+    - /bin/cp -f assets/img/logo-icon.png "$HOME/public_html/assets/img/"
+    - /bin/cp -f assets/img/favicon.png "$HOME/public_html/assets/img/"
+    - /bin/cp -f assets/img/apple-touch-icon.png "$HOME/public_html/assets/img/"
+    - /bin/cp -f assets/img/og-image.png "$HOME/public_html/assets/img/"
