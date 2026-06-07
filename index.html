@@ -258,57 +258,32 @@
         <!-- Capability pillars: the mesh woven around the open-source SIEM core -->
         <div class="pillars reveal" aria-label="Capability pillars">
           <p class="pillars__core" data-en="At the core: your open-source SIEM. NetraMesh weaves five layers of capability around it." data-id="Di intinya: SIEM open-source Anda. NetraMesh menjalin lima lapis kapabilitas di sekelilingnya."><b>At the core: your open-source SIEM.</b> NetraMesh weaves five layers of capability around it.</p>
-          <div class="pillars__row">
-            <article class="pillar">
-              <span class="pillar__ico" aria-hidden="true">◎</span>
-              <h3 class="pillar__name" data-en="Detect" data-id="Deteksi">Detect</h3>
-              <ul class="pillar__list">
-                <li data-en="OSS Integrator &amp; Enricher" data-id="Integrator &amp; Enricher OSS">OSS Integrator &amp; Enricher</li>
-                <li>UEBA</li>
-                <li>NIDS</li>
-              </ul>
-            </article>
-            <article class="pillar">
-              <span class="pillar__ico" aria-hidden="true">⊕</span>
-              <h3 class="pillar__name" data-en="Investigate" data-id="Investigasi">Investigate</h3>
-              <ul class="pillar__list">
-                <li data-en="Threat Hunting" data-id="Threat Hunting">Threat Hunting</li>
-                <li data-en="Case Management" data-id="Manajemen Kasus">Case Management</li>
-                <li data-en="Threat Intelligence Integrator" data-id="Integrator Threat Intelligence">Threat Intelligence Integrator</li>
-                <li data-en="AI-Powered Analysis &amp; Investigation" data-id="Analisis &amp; Investigasi Bertenaga AI">AI-Powered Analysis &amp; Investigation</li>
-                <li data-en="AI Threat Hunter" data-id="AI Threat Hunter">AI Threat Hunter</li>
-                <li data-en="Sandboxing" data-id="Sandboxing">Sandboxing</li>
-              </ul>
-            </article>
-            <article class="pillar">
-              <span class="pillar__ico" aria-hidden="true">⚡</span>
-              <h3 class="pillar__name" data-en="Respond" data-id="Respons">Respond</h3>
-              <ul class="pillar__list">
-                <li>SOAR</li>
-                <li data-en="Incident Response" data-id="Incident Response">Incident Response</li>
-                <li data-en="Playbooks &amp; Runbooks" data-id="Playbook &amp; Runbook">Playbooks &amp; Runbooks</li>
-              </ul>
-            </article>
-            <article class="pillar">
-              <span class="pillar__ico" aria-hidden="true">◇</span>
-              <h3 class="pillar__name" data-en="Understand" data-id="Pahami">Understand</h3>
-              <ul class="pillar__list">
-                <li>CMDB</li>
-                <li data-en="Vulnerability Management" data-id="Manajemen Kerentanan">Vulnerability Management</li>
-                <li data-en="KPI Awareness" data-id="Kesadaran KPI">KPI Awareness</li>
-                <li data-en="AI-Powered Context Awareness" data-id="Kesadaran Konteks Bertenaga AI">AI-Powered Context Awareness</li>
-                <li data-en="Adversary Simulation" data-id="Adversary Simulation">Adversary Simulation</li>
-              </ul>
-            </article>
-            <article class="pillar">
-              <span class="pillar__ico" aria-hidden="true">⬡</span>
-              <h3 class="pillar__name" data-en="Operate / Platform" data-id="Operasi / Platform">Operate / Platform</h3>
-              <ul class="pillar__list">
-                <li data-en="Multi-Tenant Capability" data-id="Kapabilitas Multi-Tenant">Multi-Tenant Capability</li>
-                <li data-en="Regulation Compliance" data-id="Kepatuhan Regulasi">Regulation Compliance</li>
-                <li data-en="MSSP-Ready" data-id="Siap MSSP">MSSP-Ready</li>
-              </ul>
-            </article>
+          <div class="onion" role="img" aria-label="Open-source SIEM core wrapped by five capability layers: Detect, Investigate, Respond, Understand, and Operate / Platform.">
+            <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <radialGradient id="onionCore" cx="50%" cy="40%" r="72%">
+                  <stop offset="0%" stop-color="#5BB0F2"/>
+                  <stop offset="58%" stop-color="#1E88E5"/>
+                  <stop offset="100%" stop-color="#1565C0"/>
+                </radialGradient>
+              </defs>
+              <circle class="onion__halo" cx="220" cy="220" r="52" fill="none" stroke="#1E88E5" stroke-width="2"/>
+              <circle class="onion__layer l-5" cx="220" cy="220" r="216" fill="rgba(30,136,229,0.05)" stroke="rgba(30,136,229,0.18)" stroke-width="1.25"/>
+              <circle class="onion__layer l-4" cx="220" cy="220" r="182" fill="rgba(30,136,229,0.08)" stroke="rgba(30,136,229,0.22)" stroke-width="1.25"/>
+              <circle class="onion__layer l-3" cx="220" cy="220" r="148" fill="rgba(30,136,229,0.12)" stroke="rgba(30,136,229,0.26)" stroke-width="1.25"/>
+              <circle class="onion__layer l-2" cx="220" cy="220" r="114" fill="rgba(30,136,229,0.17)" stroke="rgba(30,136,229,0.30)" stroke-width="1.25"/>
+              <circle class="onion__layer l-1" cx="220" cy="220" r="80" fill="rgba(30,136,229,0.23)" stroke="rgba(30,136,229,0.38)" stroke-width="1.25"/>
+              <circle class="onion__layer l-core" cx="220" cy="220" r="46" fill="url(#onionCore)" stroke="rgba(255,255,255,0.28)" stroke-width="1.5"/>
+              <text class="onion__corelbl" x="220" y="214" text-anchor="middle" fill="rgba(255,255,255,0.82)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="8.5" letter-spacing="1.5">OPEN-SOURCE</text>
+              <text class="onion__corelbl" x="220" y="231" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800" letter-spacing="1.5">SIEM</text>
+              <g class="onion__labels" paint-order="stroke" stroke="#0B1120" stroke-width="3.5" stroke-linejoin="round" fill="#F8FAFC" font-weight="700" text-anchor="middle">
+                <text class="onion__label" x="220" y="161" font-size="12.5" data-en="01 · Detect" data-id="01 · Deteksi">01 · Detect</text>
+                <text class="onion__label" x="220" y="127" font-size="12.5" data-en="02 · Investigate" data-id="02 · Investigasi">02 · Investigate</text>
+                <text class="onion__label" x="220" y="93" font-size="12.5" data-en="03 · Respond" data-id="03 · Respons">03 · Respond</text>
+                <text class="onion__label" x="220" y="59" font-size="12.5" data-en="04 · Understand" data-id="04 · Pahami">04 · Understand</text>
+                <text class="onion__label" x="220" y="25" font-size="12.5" data-en="05 · Operate / Platform" data-id="05 · Operasi / Platform">05 · Operate / Platform</text>
+              </g>
+            </svg>
           </div>
         </div>
 
