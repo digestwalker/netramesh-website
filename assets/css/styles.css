@@ -358,6 +358,30 @@ ul { list-style: none; }
 .card__text { color: var(--text-dim); font-size: .95rem; }
 .card__why { margin-top: 14px; padding-top: 13px; border-top: 1px dashed var(--border); font-size: .82rem; line-height: 1.55; color: var(--slate); }
 
+/* ---------- Capability pillars (woven around the open-source SIEM core) ---------- */
+.pillars { margin: 0 0 44px; }
+.pillars__core { text-align: center; max-width: 780px; margin: 0 auto 26px; color: var(--text); font-size: 1.04rem; line-height: 1.6; }
+.pillars__core::before { content: "◆ "; color: var(--electric-blue); opacity: .85; }
+.pillars__core b { color: var(--heading); font-weight: 700; }
+.pillars__row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; align-items: start; }
+.pillar { position: relative; padding: 22px 20px; background: var(--surface); border: 1px solid var(--border); border-top: 2px solid var(--border-strong); border-radius: var(--radius-sm); transition: border-color .3s, transform .3s var(--ease); }
+.pillar:hover { border-color: var(--border-strong); transform: translateY(-3px); }
+.pillar__ico { display: inline-flex; font-size: 1.35rem; color: var(--electric-blue); margin-bottom: 10px; }
+.pillar__name { font-size: 1.12rem; font-weight: 700; color: var(--heading); margin-bottom: 12px; padding-bottom: 12px; letter-spacing: .3px; border-bottom: 1px solid var(--border); }
+.pillar__desc { font-size: .9rem; color: var(--text-dim); line-height: 1.5; }
+.pillar__list { list-style: none; margin: 0; display: grid; gap: 8px; }
+.pillar__list li { position: relative; padding-left: 18px; font-size: .9rem; color: var(--text-dim); line-height: 1.4; }
+.pillar__list li::before { content: "▸"; position: absolute; left: 0; top: 0; color: var(--electric-blue); font-size: .82rem; }
+
+/* ---------- Product groups (cards organized under capability pillars) ---------- */
+.prodgroup { margin-top: 44px; }
+.prodgroup:first-of-type { margin-top: 0; }
+.prodgroup__title { display: flex; align-items: center; gap: 11px; font-size: 1.18rem; font-weight: 700; color: var(--heading); letter-spacing: .4px; margin-bottom: 22px; padding-bottom: 13px; border-bottom: 1px solid var(--border); }
+.prodgroup__ico { color: var(--electric-blue); font-size: 1.25rem; line-height: 1; }
+@media (max-width: 1024px) { .pillars__row { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 680px) { .pillars__row { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .pillars__row { grid-template-columns: 1fr; } }
+
 /* ---------- Solutions ---------- */
 .grid--solutions { grid-template-columns: repeat(2, 1fr); }
 .solution {
